@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>contact.god.com</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="background-animated" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="logo">G.O.D: Global Outreach & Development</h1>
+      <div class="header-controls">
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <button id="login-btn" class="login-btn" aria-haspopup="dialog" aria-controls="auth-overlay">Login</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Authentication overlay — blocks access until unlocked (client-side gate) -->
+  <div id="auth-overlay" class="auth-overlay" aria-hidden="false">
+    <div class="auth-panel" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+      <h2 id="auth-title">Site access</h2>
+      <p>Enter your name and email to access the site</p>
+
+      <label for="site-name">Name</label>
+      <input id="site-name" class="auth-input" type="text" autocomplete="name" placeholder="Your name" />
+
+      <label for="site-email">Email</label>
+      <input id="site-email" class="auth-input" type="email" autocomplete="email" placeholder="you@example.com" />
+
+      <div class="auth-actions">
+        <button id="auth-submit" class="btn">Login</button>
+      </div>
+      <p class="auth-note"></p>
+    </div>
+  </div>
+
+  <main class="container">
+  <div class="hero">
+      <div class="hero-blobs" aria-hidden="true">
+        <div class="blob blob1"></div>
+        <div class="blob blob2"></div>
+      </div>
+      <h2>Contact</h2>
+    </div>
+    <p>If you have questions, suggestions or query, type your message and send us.</p>
+    <p>We are try to reply your message.<code></code> </p>
+
+    <!-- To send messages automatically you can use EmailJS (client-side) or Formspree (POST).
+      Fill the data-emailjs-* attributes below or a data-endpoint for Formspree. -->
+  <div class="form-container">
+  <form id="contact-form" action="mailto:yatinyadav8116@gmail.com" method="GET" data-endpoint="https://formspree.io/f/mldpolkr" data-emailjs-service="YOUR_SERVICE_ID" data-emailjs-template="YOUR_TEMPLATE_ID" data-emailjs-user="YOUR_PUBLIC_KEY">
+      <label for="Name">Name</label>
+      <input id="Name" name="Name" required>
+
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" required>
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+      <button type="submit" class="btn send-btn">Send</button>
+      <div id="form-feedback" role="status" aria-live="polite"></div>
+    </form>
+  </div>
+      <!-- Success modal shown after successful submit -->
+      <div id="success-modal" class="modal" aria-hidden="true">
+        <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+          <button class="modal-close" aria-label="Close">×</button>
+          <h3 id="modal-title">Message sent</h3>
+          <p>Thanks — your message has been sent. We'll get back to you soon.</p>
+          <div style="text-align:right;margin-top:1rem;"><button class="btn modal-ok">OK</button></div>
+        </div>
+      </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">© GOD 2025</div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

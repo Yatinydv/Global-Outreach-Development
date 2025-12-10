@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Global Outreach & Development</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="background-animated" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="logo">G.O.D: Global Outreach & Development</h1>
+      <div class="header-controls">
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <button id="login-btn" class="login-btn" aria-haspopup="dialog" aria-controls="auth-overlay">Login</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Authentication overlay — blocks access until unlocked (client-side gate) -->
+  <div id="auth-overlay" class="auth-overlay" aria-hidden="false">
+    <div class="auth-panel" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+      <h2 id="auth-title">Site access</h2>
+      <p>Enter your name and email to access the site.</p>
+
+      <label for="site-name">Name</label>
+      <input id="site-name" class="auth-input" type="text" autocomplete="name" placeholder="Your name" />
+
+      <label for="site-email">Email</label>
+      <input id="site-email" class="auth-input" type="email" autocomplete="email" placeholder="you@example.com" />
+
+      <div class="auth-actions">
+        <button id="auth-submit" class="btn">login</button>
+      </div>
+      <p class="auth-note">This site is secured and verified</p>
+    </div>
+  </div>
+
+  <main class="container">
+  <section class="hero">
+      <div class="hero-blobs" aria-hidden="true">
+        <div class="blob blob1"></div>
+        <div class="blob blob2"></div>
+      </div>
+      <!-- Decorative gaming console SVG (background) -->
+      <svg class="bg-console" viewBox="0 0 200 120" aria-hidden="true">
+        <rect x="4" y="10" width="192" height="100" rx="12" ry="12" fill="rgba(0,0,0,0.12)" />
+        <rect x="18" y="24" width="120" height="72" rx="6" ry="6" fill="rgba(255,255,255,0.06)" />
+        <circle cx="156" cy="56" r="10" fill="rgba(255,255,255,0.12)" />
+        <rect x="28" y="28" width="28" height="8" rx="2" ry="2" fill="rgba(0,0,0,0.08)" />
+        <rect x="28" y="44" width="8" height="8" rx="2" ry="2" fill="rgba(0,0,0,0.08)" />
+        <rect x="40" y="44" width="8" height="8" rx="2" ry="2" fill="rgba(0,0,0,0.08)" />
+      </svg>
+  <h2>A Better World Starts With Us</h2>
+  <p class="hero-subtitle">Join our mission to build a better world for everyone. See your impact, invest in the future, and change a life today</p>
+  <p class="hero-subtitle">Witness the power of direct impact and connect your generosity through donations of money, clothes, or items with those in need</p>
+  <p><a class="btn" href="mission.html">Learn more</a></p>
+    </section> 
+
+    <section class="features">
+      <article>
+        <h3>Our Impact History</h3>
+        <p>Explore the starting point of our beneficiaries’ journeys and the challenges they faced before intervention</p>
+      <p><a class="btn" href="Our Impact History.html">Click here</a></p>
+      </article>
+      <article>
+        <h3>Witness the Change</h3>
+        <p>See real-time progress and tangible outcomes achieved thanks to donor contributions</p>
+      <p><a class="btn" href="Witness the Change.html">Click here</a></p>
+      </article>
+      <article>
+        <h3>Explore Our Vision</h3>
+        <p>Discover our strategic roadmap, future goals, and opportunities for long-term investment in global change</p>
+      <p><a class="btn" href="Explore Our Vision.html">Click here</a></p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">•© GOD 2025 •</a></div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

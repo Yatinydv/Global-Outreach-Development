@@ -1,0 +1,87 @@
+/* Simple responsive styles */
+:root{
+  --bg:#070404;
+  --text:#222;
+  --accent:#000000;
+  --muted:#666;
+  --glass: rgba(255,255,255,0.6);
+}
+
+*{box-sizing:border-box}
+body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0; color:var(--text); background:var(--bg); line-height:2.2; font-size:clamp(15px,1.6vw,18px)}
+.background-animated{position:fixed;inset:0;z-index:-2;pointer-events:none;background:linear-gradient(120deg,#e95e0e,#ffffff,#21e21a);background-size:200% 200%;animation:gradientShift 12s ease infinite}
+.background-animated::after{content:"";position:absolute;inset:0;background:radial-gradient(rgba(255,255,255,0.03),transparent 30%)}
+.container{ max-width:auto;margin:auto;padding:auto;}
+.site-header{background:hwb(14 27% 6%);border-bottom:auto solid #ffffff00}
+.site-header .container{display:flex;align-items:auto;justify-content:space-between}
+.logo{margin: 0px;;font-size:1.25rem}
+nav a{margin-left:1rem;color:var(--accent);text-decoration:none}
+.hero{padding:3rem 0;text-align:center}
+.hero-full{min-height:calc(100vh - 72px);display:flex;align-items:center;justify-content:center;padding:0 1rem}
+.hero-full .hero-blobs{opacity:0.9}
+
+.hero h2{color:#000000;font-size:clamp(1.75rem,4vw,3.5rem);margin:0 0 .5rem;z-index:1;position:relative;text-shadow:none}
+.hero-subtitle{color:rgba(0, 0, 0, 0.9);font-size:1.125rem;margin:0 0 1rem;z-index:1;position:relative}
+.hero .btn{background:rgb(47, 155, 243);border:1px solid rgba(255, 255, 255, 0);color:#ffffff}
+
+/* Decorative gaming console SVG */
+.bg-console{position:fixed;right:3%;bottom:6%;width:auto;height:auto;z-index:-1;opacity:0.12;transform-origin:center center;pointer-events:none;filter:drop-shadow(0 10px 30px rgba(0, 0, 0, 0));animation:consoleRotate 20s linear infinite}
+
+@keyframes consoleRotate{0%{transform:rotate(0deg) translateY(0)}50%{transform:rotate(2deg) translateY(-6px)}100%{transform:rotate(0deg) translateY(0)}}
+
+@media (max-width:700px){
+  .bg-console{display:none}
+}
+
+/* Modal styles */
+.modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(2,6,23,0.45);z-index:1000;opacity:0;pointer-events:none;transition:opacity .25s ease}
+.modal[aria-hidden="false"]{opacity:1;pointer-events:auto}
+.modal-content{background:var(--bg);padding:1.25rem;border-radius:10px;max-width:420px;width:90%;box-shadow:0 12px 40px rgba(2,6,23,0.25)}
+.modal-close{position:absolute;right:14px;top:12px;background:transparent;border:none;font-size:1.4rem;cursor:pointer}
+.modal .btn{margin:0}
+.hero{position:relative;overflow:hidden}
+.hero-blobs{position:absolute;inset:0;z-index:-1}
+.blob{position:absolute;border-radius:50%;filter:blur(40px);opacity:0.35;transform:translate3d(0,0,0)}
+.blob1{width:340px;height:340px;background:rgba(59, 178, 246, 0.85);left:-80px;top:-60px;animation:float1 8s ease-in-out infinite}
+.blob2{width:420px;height:420px;background:rgba(59, 178, 246, 0.85);right:-120px;bottom:-80px;animation:float2 10s ease-in-out infinite}
+
+@keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@keyframes float1{0%{transform:translateY(0) translateX(0)}50%{transform:translateY(-20px) translateX(10px)}100%{transform:translateY(0) translateX(0)}}
+@keyframes float2{0%{transform:translateY(0) translateX(0)}50%{transform:translateY(18px) translateX(-12px)}100%{transform:translateY(0) translateX(0)}}
+.btn{display:inline-block;background:var(--accent);color:#ffffff;padding:.5rem 1rem;border-radius:6px;text-decoration:none}
+.features{display:grid;grid-template-columns:1fr;gap:1rem}
+.features article{padding:1rem;background:#ffffff00;border:1px solid #eeeeee00;border-radius:6px}
+.site-footer{padding:1rem 0;text-align:center;color:var(--muted);border-top:1px solid #eeeeee00;margin-top:2rem}
+
+@media(min-width:700px){
+  .features{grid-template-columns:repeat(3,1fr)}
+}
+form{display:grid;gap:.5rem}
+input,textarea{padding:.5rem;border:1px solid hsl(0, 0%, 100%);border-radius:4px}
+button.btn{border:none;cursor:pointer}
+
+/* Header controls: nav + login button */
+.header-controls{display:flex;align-items:center;gap:.6rem}
+.login-btn{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--accent);padding:.35rem .6rem;border-radius:6px;cursor:pointer}
+
+/* Simple client-side auth overlay (blocks UI until unlocked) */
+.auth-overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(2,6,23,0.7);z-index:2000;pointer-events:auto}
+.auth-panel{background:var(--bg);color:var(--text);padding:1.25rem;border-radius:10px;max-width:380px;width:92%;box-shadow:0 12px 40px rgba(0,0,0,0.5);text-align:left}
+.auth-panel h2{margin-top:0}
+.auth-input{width:100%;padding:.5rem;margin:.5rem 0;border-radius:6px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--text)}
+.auth-actions{display:flex;justify-content:flex-end}
+.auth-note{font-size:.8rem;color:var(--muted);margin-top:.5rem}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* error state for auth inputs */
+.auth-input.auth-error{outline:2px solid rgba(255,80,80,0.18);box-shadow:0 0 0 3px rgba(255,80,80,0.04)}
+
+/* logged in appearance for the login button */
+.login-btn.logged-in{background:rgba(255,255,255,0.06);color:#fff;border-color:transparent}
+
+/* Form container so we can absolutely position the small send button */
+.form-container{position:relative;padding-bottom:3.25rem}
+.send-btn{position:absolute;right:8px;bottom:8px;padding:.35rem .6rem;font-size:.85rem;border-radius:6px}
+
+/* When overlay is hidden we set pointer-events none (JS toggles aria-hidden) */
+.auth-overlay[aria-hidden="true"]{opacity:0;pointer-events:none;visibility:hidden}
