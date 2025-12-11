@@ -1,11 +1,20 @@
 // Small enhancements: form feedback, keyboard shortcut, and parallax blobs
 document.addEventListener('DOMContentLoaded', function(){
-  // --- Client-side auth overlay logic (name & email) ---
+  // --- Client-side auth overlay logic (email verification + owner password) ---
   const authOverlay = document.getElementById('auth-overlay');
   const authSubmit = document.getElementById('auth-submit');
   const nameInput = document.getElementById('site-name');
   const emailInput = document.getElementById('site-email');
   const loginBtn = document.getElementById('login-btn');
+  const ownerToggle = document.getElementById('owner-toggle');
+  const ownerFlow = document.getElementById('owner-flow');
+  const ownerPassword = document.getElementById('owner-password');
+  const emailVerifyStep = document.getElementById('email-verify-step');
+  const emailCodeInput = document.getElementById('email-code');
+  const verifyCodeBtn = document.getElementById('verify-code');
+  const authMessage = document.getElementById('auth-message');
+
+  let ownerMode = false;
 
   function updateLoginButton(){
     try{
@@ -27,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function(){
       sessionStorage.setItem('siteUnlocked','1');
       sessionStorage.setItem('siteUserName', userName || '');
       sessionStorage.setItem('siteUserEmail', userEmail || '');
+      sessionStorage.removeItem('emailVerificationCode');
     }catch(e){}
     updateLoginButton();
   }
@@ -45,34 +55,116 @@ document.addEventListener('DOMContentLoaded', function(){
   }catch(e){}
   updateLoginButton();
 
-  // validate email simple regex
-  function isValidEmail(v){
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v || '');
+  function isValidEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v || ''); }
+
+  // Toggle between email flow and owner password flow
+  if (ownerToggle) {
+    ownerToggle.addEventListener('click', function(){
+      ownerMode = !ownerMode;
+      if (ownerMode) {
+        ownerFlow.style.display = '';
+        document.getElementById('email-flow').style.display = 'none';
+        authMessage.textContent = 'Enter the owner password to access the site.';
+        ownerPassword && ownerPassword.focus();
+      } else {
+        ownerFlow.style.display = 'none';
+        document.getElementById('email-flow').style.display = '';
+        authMessage.textContent = 'Enter your name and email to access the site.';
+        nameInput && nameInput.focus();
+      }
+    });
   }
 
-  if (authSubmit && nameInput && emailInput) {
+  // Handle initial login/submit
+  if (authSubmit) {
     authSubmit.addEventListener('click', function(){
-      const nm = (nameInput.value || '').trim();
-      const em = (emailInput.value || '').trim();
-      // basic validation
-      if (!nm) {
-        nameInput.classList.add('auth-error');
-        nameInput.focus();
-        setTimeout(()=> nameInput.classList.remove('auth-error'), 900);
+      if (ownerMode) {
+        const pw = (ownerPassword && ownerPassword.value || '').trim();
+        if (!pw) {
+          ownerPassword.classList.add('auth-error'); ownerPassword.focus();
+          setTimeout(()=> ownerPassword.classList.remove('auth-error'), 800); return;
+        }
+        // Owner password check (plain client-side password)
+        if (pw === '6728') {
+          unlockSite('Owner','');
+        } else {
+          authMessage.textContent = 'Incorrect owner password.';
+          ownerPassword.classList.add('auth-error');
+          setTimeout(()=> ownerPassword.classList.remove('auth-error'), 900);
+        }
         return;
       }
-      if (!isValidEmail(em)) {
-        emailInput.classList.add('auth-error');
-        emailInput.focus();
-        setTimeout(()=> emailInput.classList.remove('auth-error'), 900);
-        return;
+
+      // Email flow: validate name/email and start verification
+      const nm = (nameInput && nameInput.value || '').trim();
+      const em = (emailInput && emailInput.value || '').trim();
+      if (!nm) { nameInput.classList.add('auth-error'); nameInput.focus(); setTimeout(()=> nameInput.classList.remove('auth-error'),900); return; }
+      if (!isValidEmail(em)) { emailInput.classList.add('auth-error'); emailInput.focus(); setTimeout(()=> emailInput.classList.remove('auth-error'),900); return; }
+
+      // Generate a 6-digit verification code
+      const code = ('000000' + Math.floor(Math.random()*1000000)).slice(-6);
+      try { sessionStorage.setItem('emailVerificationCode', code); sessionStorage.setItem('emailPendingName', nm); sessionStorage.setItem('emailPendingAddress', em); }catch(e){}
+      emailVerifyStep && (emailVerifyStep.style.display = '');
+
+      // Attempt to send via EmailJS if configured in meta tags
+      const metaUser = document.querySelector('meta[name="emailjs-user"]');
+      const metaService = document.querySelector('meta[name="emailjs-service"]');
+      const metaTemplate = document.querySelector('meta[name="emailjs-template"]');
+      const emailjsUser = metaUser && metaUser.content || '';
+      const emailjsService = metaService && metaService.content || '';
+      const emailjsTemplate = metaTemplate && metaTemplate.content || '';
+
+      if (emailjsUser && emailjsService && emailjsTemplate && emailjsUser !== 'YOUR_EMAILJS_USER_ID') {
+        authMessage.textContent = 'Sending verification code to your email...';
+        (async function(){
+          try {
+            if (!window.emailjs) {
+              await loadScript('https://cdn.emailjs.com/sdk/3.2.0/email.min.js');
+              emailjs.init(emailjsUser);
+            }
+            const templateParams = { to_email: em, code: code, name: nm };
+            await emailjs.send(emailjsService, emailjsTemplate, templateParams);
+            authMessage.textContent = 'Verification code sent — check your inbox.';
+            emailCodeInput && emailCodeInput.focus();
+          } catch (err) {
+            console.warn('EmailJS send failed', err);
+            // Fallback: show code in UI for demo/testing
+            authMessage.textContent = 'Failed to send email; showing code for demo: ' + code;
+            emailCodeInput && emailCodeInput.focus();
+          }
+        })();
+      } else {
+        // No EmailJS configured: fallback to showing code in UI for demo/testing
+        authMessage.textContent = 'A verification code was generated (demo). Enter the code below.';
+        authMessage.textContent += ' (Code: ' + code + ')';
+        emailCodeInput && emailCodeInput.focus();
       }
-      // success: store and unlock
-      unlockSite(nm, em);
     });
-    emailInput.addEventListener('keydown', function(ev){ if (ev.key === 'Enter') authSubmit.click(); });
-    nameInput.addEventListener('keydown', function(ev){ if (ev.key === 'Enter') { ev.preventDefault(); emailInput.focus(); } });
   }
+
+  // Verify code handler
+  if (verifyCodeBtn) {
+    verifyCodeBtn.addEventListener('click', function(){
+      const entered = (emailCodeInput && emailCodeInput.value || '').trim();
+      const expected = (sessionStorage.getItem('emailVerificationCode') || '').toString();
+      if (!entered) { emailCodeInput.classList.add('auth-error'); emailCodeInput.focus(); setTimeout(()=> emailCodeInput.classList.remove('auth-error'),900); return; }
+      if (entered === expected) {
+        const nm = sessionStorage.getItem('emailPendingName') || '';
+        const em = sessionStorage.getItem('emailPendingAddress') || '';
+        unlockSite(nm, em);
+      } else {
+        authMessage.textContent = 'Verification code does not match.';
+        emailCodeInput.classList.add('auth-error');
+        setTimeout(()=> emailCodeInput.classList.remove('auth-error'),900);
+      }
+    });
+  }
+
+  // Enter key handling for inputs
+  if (emailInput) emailInput.addEventListener('keydown', function(ev){ if (ev.key === 'Enter') authSubmit.click(); });
+  if (nameInput) nameInput.addEventListener('keydown', function(ev){ if (ev.key === 'Enter') { ev.preventDefault(); emailInput && emailInput.focus(); } });
+  if (emailCodeInput) emailCodeInput.addEventListener('keydown', function(ev){ if (ev.key === 'Enter') verifyCodeBtn && verifyCodeBtn.click(); });
+  if (ownerPassword) ownerPassword.addEventListener('keydown', function(ev){ if (ev.key === 'Enter') authSubmit && authSubmit.click(); });
 
   if (loginBtn) {
     loginBtn.addEventListener('click', function(){
