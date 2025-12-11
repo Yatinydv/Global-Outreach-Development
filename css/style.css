@@ -13,9 +13,13 @@ body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica
 .background-animated::after{content:"";position:absolute;inset:0;background:radial-gradient(rgba(255,255,255,0.03),transparent 30%)}
 .container{ max-width:auto;margin:auto;padding:auto;}
 .site-header{background:hwb(14 27% 6%);border-bottom:auto solid #ffffff00}
-.site-header .container{display:flex;align-items:auto;justify-content:space-between}
-.logo{margin: 0px;;font-size:1.25rem;display:flex;align-items:center}
+.site-header .container{display:flex;align-items:center;justify-content:space-between}
+.logo{margin: 0px;;font-size:1.25rem;display:flex;align-items:center;gap:0.6rem}
+.logo svg{height:48px;width:48px;flex:0 0 auto}
 .logo img{height:40px;width:40px;margin-right:0.5rem;border-radius:50%}
+@media (max-width:480px){
+  .logo svg{height:36px;width:36px}
+}
 nav a{margin-left:1rem;color:var(--accent);text-decoration:none}
 .hero{padding:3rem 0;text-align:center}
 .hero-full{min-height:calc(100vh - 72px);display:flex;align-items:center;justify-content:center;padding:0 1rem}
