@@ -49,6 +49,8 @@ nav a{margin-left:1rem;color:var(--accent);text-decoration:none}
 @keyframes float1{0%{transform:translateY(0) translateX(0)}50%{transform:translateY(-20px) translateX(10px)}100%{transform:translateY(0) translateX(0)}}
 @keyframes float2{0%{transform:translateY(0) translateX(0)}50%{transform:translateY(18px) translateX(-12px)}100%{transform:translateY(0) translateX(0)}}
 .btn{display:inline-block;background:var(--accent);color:#ffffff;padding:.5rem 1rem;border-radius:6px;text-decoration:none}
+.future-plans-section p{ text-align:center; margin:1rem 0; }
+.future-plans-section .btn{ display:inline-block; margin:0 auto; padding:.6rem 1.4rem; border-radius:8px; min-width:160px; max-width:320px; box-shadow:0 6px 18px rgba(0,0,0,0.12); background:#2F9BF3; color:#fff; text-align:center }
 .features{display:grid;grid-template-columns:1fr;gap:1rem}
 .features article{padding:1rem;background:#ffffff00;border:1px solid #eeeeee00;border-radius:6px}
 .site-footer{padding:1rem 0;text-align:center;color:var(--muted);border-top:1px solid #eeeeee00;margin-top:2rem}

@@ -10,21 +10,89 @@
 
 <body>
   <div class="background-animated" aria-hidden="true"></div>
-  <header class="site-header">
-    <div class="container">
-      <h1 class="logo">G.O.D: Global Outreach & Development</h1>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </div>
-  </header>
+  <!doctype html>
+  <html lang="en">
 
-  <main class="container">
-    <div class="hero">
-      <div class="hero-blobs" aria-hidden="true">
-        <div class="blob blob1"></div>
-        <div class="blob blob2"></div>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Explore Our Vision</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+
+  <body>
+    <div class="background-animated" aria-hidden="true"></div>
+    <header class="site-header">
+      <div class="container">
+        <h1 class="logo">G.O.D: Global Outreach & Development</h1>
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
       </div>
-      <h1>Vision & Future Plans</h1>
+    </header>
+
+    <main class="container">
+      <div class="hero">
+        <div class="hero-blobs" aria-hidden="true">
+          <div class="blob blob1"></div>
+          <div class="blob blob2"></div>
+        </div>
+        <h1>Our Vision and Future Plans</h1>
+        <video id="visionVideo" controls controlsList="nodownload" autoplay muted playsinline loop width="600" height="400" oncontextmenu="return false;">
+          <source src="our future plans.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <section class="vision-section">
+        <h2>Our Vision</h2>
+        <p>At G.O.D, our vision is to create a world where every individual has access to essential resources, education, and opportunities for growth. We believe in empowering communities to build sustainable futures through collaborative efforts and innovative solutions.</p>
+      </section>
+
+      <section class="future-plans-section">
+        <h2>Future Plans</h2>
+        <ul>
+          <li>Expand our outreach programs to underserved regions.</li>
+          <li>Develop partnerships with local organizations for greater impact.</li>
+          <li>Implement technology-driven solutions for education and healthcare.</li>
+          <li>Launch fundraising campaigns to support new initiatives.</li>
+        </ul>
+        <h3>Invest in Impact: Our Plan for a Stronger Community</h3>
+         <li>Invest to make change in hundreds of life of people in need.</li>
+         <p><a class="btn" href="">Donate now!</a></p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; 2025 G.O.D: Global Outreach & Development. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Attempt to play the video on page load. Autoplay works when muted in most browsers.
+      document.addEventListener('DOMContentLoaded', function () {
+        const v = document.getElementById('visionVideo');
+        if (!v) return;
+        // Ensure muted so autoplay is allowed
+        v.muted = true;
+        const p = v.play();
+        if (p !== undefined) {
+          p.catch(() => {
+            // If autoplay is blocked, wait for first user interaction then try again
+            const retry = () => {
+              v.play().catch(() => {});
+              window.removeEventListener('click', retry);
+              window.removeEventListener('keydown', retry);
+            };
+            window.addEventListener('click', retry);
+            window.addEventListener('keydown', retry);
+          });
+        }
+      });
+    </script>
+
+  </body>
+  </html>
