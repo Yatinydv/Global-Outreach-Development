@@ -101,45 +101,50 @@ document.addEventListener('DOMContentLoaded', function(){
       if (!nm) { nameInput.classList.add('auth-error'); nameInput.focus(); setTimeout(()=> nameInput.classList.remove('auth-error'),900); return; }
       if (!isValidEmail(em)) { emailInput.classList.add('auth-error'); emailInput.focus(); setTimeout(()=> emailInput.classList.remove('auth-error'),900); return; }
 
-      // Generate a 6-digit verification code
-      const code = ('000000' + Math.floor(Math.random()*1000000)).slice(-6);
-      try { sessionStorage.setItem('emailVerificationCode', code); sessionStorage.setItem('emailPendingName', nm); sessionStorage.setItem('emailPendingAddress', em); }catch(e){}
-      emailVerifyStep && (emailVerifyStep.style.display = '');
-
-      // Attempt to send via EmailJS if configured in meta tags
-      const metaUser = document.querySelector('meta[name="emailjs-user"]');
-      const metaService = document.querySelector('meta[name="emailjs-service"]');
-      const metaTemplate = document.querySelector('meta[name="emailjs-template"]');
-      const emailjsUser = metaUser && metaUser.content || '';
-      const emailjsService = metaService && metaService.content || '';
-      const emailjsTemplate = metaTemplate && metaTemplate.content || '';
-
-      if (emailjsUser && emailjsService && emailjsTemplate && emailjsUser !== 'YOUR_EMAILJS_USER_ID') {
-        authMessage.textContent = 'Sending verification code to your email...';
-        (async function(){
-          try {
-            if (!window.emailjs) {
-              await loadScript('https://cdn.emailjs.com/sdk/3.2.0/email.min.js');
-              emailjs.init(emailjsUser);
-            }
-            const templateParams = { to_email: em, code: code, name: nm };
-            await emailjs.send(emailjsService, emailjsTemplate, templateParams);
-            authMessage.textContent = 'Verification code sent — check your inbox.';
-            emailCodeInput && emailCodeInput.focus();
-          } catch (err) {
-            console.warn('EmailJS send failed', err);
-            // Fallback: show code in UI for demo/testing
-            authMessage.textContent = 'Failed to send email; showing code for demo: ' + code;
-            emailCodeInput && emailCodeInput.focus();
-          }
-        })();
-      } else {
-        // No EmailJS configured: fallback to showing code in UI for demo/testing
-        authMessage.textContent = 'A verification code was generated (demo). Enter the code below.';
-        authMessage.textContent += ' (Code: ' + code + ')';
-        emailCodeInput && emailCodeInput.focus();
-      }
+      // Generate and send verification code (extracted to function for reuse)
+      sendVerificationCode(nm, em);
     });
+  }
+
+  // Helper function to generate and send verification code
+  function sendVerificationCode(nm, em) {
+    // Generate a 6-digit verification code
+    const code = ('000000' + Math.floor(Math.random()*1000000)).slice(-6);
+    try { sessionStorage.setItem('emailVerificationCode', code); sessionStorage.setItem('emailPendingName', nm); sessionStorage.setItem('emailPendingAddress', em); }catch(e){}
+    emailVerifyStep && (emailVerifyStep.style.display = '');
+
+    // Attempt to send via EmailJS if configured in meta tags
+    const metaUser = document.querySelector('meta[name="emailjs-user"]');
+    const metaService = document.querySelector('meta[name="emailjs-service"]');
+    const metaTemplate = document.querySelector('meta[name="emailjs-template"]');
+    const emailjsUser = metaUser && metaUser.content || '';
+    const emailjsService = metaService && metaService.content || '';
+    const emailjsTemplate = metaTemplate && metaTemplate.content || '';
+
+    if (emailjsUser && emailjsService && emailjsTemplate && emailjsUser !== 'YOUR_EMAILJS_USER_ID') {
+      authMessage.textContent = 'Sending verification code to your email...';
+      (async function(){
+        try {
+          if (!window.emailjs) {
+            await loadScript('https://cdn.emailjs.com/sdk/3.2.0/email.min.js');
+            emailjs.init(emailjsUser);
+          }
+          const templateParams = { to_email: em, code: code, name: nm };
+          await emailjs.send(emailjsService, emailjsTemplate, templateParams);
+          authMessage.textContent = 'Verification code sent — check your inbox.';
+          emailCodeInput && emailCodeInput.focus();
+        } catch (err) {
+          console.warn('EmailJS send failed', err);
+          // Fallback: show code in UI for demo/testing
+          authMessage.textContent = 'Failed to send email; code: ' + code;
+          emailCodeInput && emailCodeInput.focus();
+        }
+        })();
+    } else {
+      // No EmailJS configured: fallback to showing code in UI for demo/testing
+      authMessage.textContent = 'Code generated (demo): ' + code;
+      emailCodeInput && emailCodeInput.focus();
+    }
   }
 
   // Verify code handler
@@ -156,6 +161,22 @@ document.addEventListener('DOMContentLoaded', function(){
         authMessage.textContent = 'Verification code does not match.';
         emailCodeInput.classList.add('auth-error');
         setTimeout(()=> emailCodeInput.classList.remove('auth-error'),900);
+      }
+    });
+  }
+
+  // Resend code handler
+  const resendCodeBtn = document.getElementById('resend-code');
+  if (resendCodeBtn) {
+    resendCodeBtn.addEventListener('click', function(){
+      const nm = sessionStorage.getItem('emailPendingName') || '';
+      const em = sessionStorage.getItem('emailPendingAddress') || '';
+      if (nm && em) {
+        authMessage.textContent = 'Resending verification code...';
+        emailCodeInput && (emailCodeInput.value = '');
+        sendVerificationCode(nm, em);
+      } else {
+        authMessage.textContent = 'Error: name or email not found.';
       }
     });
   }

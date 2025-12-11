@@ -43,7 +43,10 @@
         <div id="email-verify-step" style="display:none;margin-top:.5rem;">
           <label for="email-code">Verification code</label>
           <input id="email-code" class="auth-input" type="text" placeholder="Enter code" />
-          <div style="margin-top:.5rem"><button id="verify-code" class="btn" type="button">Verify code</button></div>
+          <div style="margin-top:.5rem;display:flex;gap:.5rem">
+            <button id="verify-code" class="btn" type="button">Verify code</button>
+            <button id="resend-code" class="btn" type="button" style="background:#666">Resend code</button>
+          </div>
         </div>
       </div>
 
