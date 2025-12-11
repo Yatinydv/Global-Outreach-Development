@@ -14,7 +14,8 @@ body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica
 .container{ max-width:auto;margin:auto;padding:auto;}
 .site-header{background:hwb(14 27% 6%);border-bottom:auto solid #ffffff00}
 .site-header .container{display:flex;align-items:auto;justify-content:space-between}
-.logo{margin: 0px;;font-size:1.25rem}
+.logo{margin: 0px;;font-size:1.25rem;display:flex;align-items:center}
+.logo img{height:40px;width:40px;margin-right:0.5rem;border-radius:50%}
 nav a{margin-left:1rem;color:var(--accent);text-decoration:none}
 .hero{padding:3rem 0;text-align:center}
 .hero-full{min-height:calc(100vh - 72px);display:flex;align-items:center;justify-content:center;padding:0 1rem}
