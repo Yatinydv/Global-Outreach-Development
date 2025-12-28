@@ -4,27 +4,317 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Our Impact History</title>
+  <meta name="emailjs-user" content="VMEkvD76cdnb2sIad">
+  <meta name="emailjs-service" content="god_9813">
+  <meta name="emailjs-template" content="GOD_6728">
+  <title>Your Impact Matters - Our Impact History</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 240'><text x='100' y='25' font-size='16' font-weight='bold' text-anchor='middle' fill='%234CADE6' letter-spacing='2'>HELPING HANDS</text><path d='M 80 50 Q 50 60 50 100 Q 50 140 80 150' stroke='%232C3E50' stroke-width='6' fill='none' stroke-linecap='round'/><path d='M 120 50 Q 150 60 150 100 Q 150 140 120 150' stroke='%232C3E50' stroke-width='6' fill='none' stroke-linecap='round'/><circle cx='100' cy='100' r='35' fill='none' stroke='%232C3E50' stroke-width='4'/><text x='100' y='120' font-size='48' font-weight='bold' text-anchor='middle' fill='%234CADE6'>GOD</text><text x='100' y='225' font-size='12' font-weight='bold' text-anchor='middle' fill='%234CADE6' letter-spacing='1'>A BETTER WORLD</text></svg>">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    .impact-hero {
+      background: linear-gradient(135deg, rgba(79, 172, 230, 0.1), rgba(44, 62, 80, 0.1));
+      padding: 4rem 2rem;
+      border-radius: 12px;
+      margin: 2rem 0;
+      text-align: center;
+    }
+    .impact-hero h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: #4CADE6;
+      margin: 1rem 0;
+      font-weight: bold;
+      line-height: 1.2;
+    }
+    .impact-hero .subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.5rem);
+      color: #2C3E50;
+      margin: 1rem 0 2rem;
+      line-height: 1.6;
+    }
+    .impact-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+    .stat-card {
+      background: rgba(79, 172, 230, 0.08);
+      padding: 2rem;
+      border-radius: 10px;
+      border-left: 4px solid #4CADE6;
+      text-align: center;
+    }
+    .stat-card .number {
+      font-size: 2.5rem;
+      color: #4CADE6;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+    .stat-card .label {
+      font-size: 1rem;
+      color: #2C3E50;
+      line-height: 1.4;
+    }
+    .impact-message {
+      background: rgba(44, 62, 80, 0.05);
+      padding: 2.5rem;
+      border-radius: 10px;
+      margin: 2rem 0;
+      border-top: 3px solid #4CADE6;
+    }
+    .impact-message h2 {
+      color: #2C3E50;
+      margin-top: 0;
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+    }
+    .impact-message p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #333;
+      margin: 1rem 0;
+    }
+    .impact-stories {
+      margin: 3rem 0;
+    }
+    .story {
+      background: white;
+      padding: 2rem;
+      margin: 1.5rem 0;
+      border-radius: 10px;
+      border-left: 5px solid #4CADE6;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .story-title {
+      color: #4CADE6;
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .story-text {
+      color: #333;
+      line-height: 1.6;
+      margin: 0.5rem 0;
+    }
+    .cta-section {
+      text-align: center;
+      margin: 4rem 0 2rem;
+      padding: 3rem 2rem;
+      background: linear-gradient(135deg, #4CADE6, #2C3E50);
+      border-radius: 12px;
+      color: white;
+    }
+    .cta-section h3 {
+      font-size: 2rem;
+      margin: 1rem 0;
+      color: white;
+    }
+    .cta-section p {
+      font-size: 1.1rem;
+      margin: 1rem 0 2rem;
+      opacity: 0.95;
+    }
+    .donate-btn {
+      display: inline-block;
+      background: white;
+      color: #4CADE6;
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border-radius: 8px;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    }
+    .donate-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+      background: #f0f0f0;
+    }
+    .impact-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+    .feature {
+      padding: 2rem;
+      text-align: center;
+    }
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    .feature h4 {
+      color: #4CADE6;
+      font-size: 1.2rem;
+      margin: 1rem 0;
+    }
+    .feature p {
+      color: #666;
+      line-height: 1.6;
+    }
+  </style>
 </head>
 
 <body>
   <div class="background-animated" aria-hidden="true"></div>
   <header class="site-header">
     <div class="container">
-      <h1 class="logo">G.O.D: Global Outreach & Development</h1>
+      <h1 class="logo"><svg width="60" height="70" viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg"><text x="100" y="25" font-size="14" font-weight="bold" text-anchor="middle" fill="#4CADE6" letter-spacing="1">HELPING</text><path d="M 80 50 Q 50 65 50 100 Q 50 135 80 145" stroke="#2C3E50" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M 120 50 Q 150 65 150 100 Q 150 135 120 145" stroke="#2C3E50" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="100" cy="100" r="32" fill="none" stroke="#2C3E50" stroke-width="3"/><text x="100" y="115" font-size="40" font-weight="bold" text-anchor="middle" fill="#4CADE6">GOD</text></svg> G.O.D: Global Outreach & Development</h1>
       <nav>
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
+        <button class="logout-btn" onclick="handleLogout(event)">Logout</button>
       </nav>
+      <button class="hamburger-btn" id="hamburger-btn" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </header>
 
+  <!-- Mobile Menu -->
+  <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html" onclick="closeMobileMenu()">Home</a>
+    <a href="about.html" onclick="closeMobileMenu()">About</a>
+    <a href="contact.html" onclick="closeMobileMenu()">Contact</a>
+    <a href="#" onclick="handleLogout(event)">Logout</a>
+  </div>
+
   <main class="container">
-    <div class="hero">
-      <div class="hero-blobs" aria-hidden="true">
-        <div class="blob blob1"></div>
-        <div class="blob blob2"></div>
+    <div class="impact-hero">
+      <h1>Your Impact Matters</h1>
+      <p class="subtitle">Every dollar, every moment, every act of kindness creates ripples of change that transform lives and build a better world for generations to come.</p>
+    </div>
+
+    <section class="impact-stats">
+      <div class="stat-card">
+        <div class="number">1000+</div>
+        <div class="label">Lives Changed</div>
       </div>
+      <div class="stat-card">
+        <div class="number">50+</div>
+        <div class="label">Communities Reached</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">99%</div>
+        <div class="label">Impact Driven</div>
+      </div>
+    </section>
+
+    <section class="impact-message">
+      <h2>Why Your Help Matters</h2>
+      <p>Poverty is not just a lack of money—it's a lack of opportunity. When you donate to Global Outreach & Development, you're not just giving aid; you're investing in human potential. You're opening doors that have been closed, lighting hope where darkness prevails, and building foundations for sustainable change.</p>
+      <p>Every contribution, no matter the size, has the power to:</p>
+      <ul style="text-align: left; max-width: 600px; margin: 1rem auto; line-height: 2;">
+        <li>✨ Provide education to a child who dreams of a better future</li>
+        <li>❤️ Deliver healthcare to communities with no access to medical care</li>
+        <li>🏠 Build shelter for families living in extreme poverty</li>
+        <li>💪 Empower individuals with skills to lift themselves out of hardship</li>
+        <li>🌍 Create sustainable development that lasts for generations</li>
+      </ul>
+    </section>
+
+    <section class="impact-stories">
+      <h2 style="text-align: center; margin-bottom: 2rem;">Stories of Change</h2>
+      
+      <div class="story">
+        <div class="story-title">🌟 From Struggle to Success</div>
+        <div class="story-text">Maria was a 10-year-old orphan working in fields instead of attending school. Through our education program, she learned to read, write, and dream. Today, she's training to become a teacher herself. Her journey shows what's possible when someone believes in you.</div>
+      </div>
+
+      <div class="story">
+        <div class="story-title">💗 A Mother's Second Chance</div>
+        <div class="story-text">Amina was raising three children alone with no source of income. Our skills training program taught her tailoring. Now she runs her own small business, supports her family with dignity, and employs two other women in her community. One gift created a ripple of change.</div>
+      </div>
+
+      <div class="story">
+        <div class="story-title">🏥 Health, Hope & Life</div>
+        <div class="story-text">In a remote village with no clinic, preventable diseases claimed lives every month. Your donations helped establish a health center. In just one year, infant mortality dropped 60%, and women received prenatal care for the first time. Lives saved. Futures secured.</div>
+      </div>
+    </section>
+
+    <section class="impact-features">
+      <div class="feature">
+        <div class="feature-icon">🎯</div>
+        <h4>Transparent Impact</h4>
+        <p>We believe you deserve to know exactly how your donation creates change. Full accountability, real results.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🌱</div>
+        <h4>Sustainable Solutions</h4>
+        <p>We don't just give temporary aid. We build lasting change that empowers communities to thrive independently.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🤝</div>
+        <h4>Community-First Approach</h4>
+        <p>Local voices lead the way. We listen, learn, and partner with communities to create solutions that truly work.</p>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <h3>Ready to Make a Difference?</h3>
+      <p>Your generosity doesn't just change lives—it transforms entire communities. Every contribution is a vote for a better world.</p>
+      <a href="payment.html" class="donate-btn">Donate Now</a>
+    </section>
+
+    <section style="text-align: center; padding: 2rem; background: rgba(79, 172, 230, 0.05); border-radius: 10px; margin: 3rem 0;">
+      <h3 style="color: #2C3E50;">Questions? We're Here to Help</h3>
+      <p style="color: #666;">Connect with us to learn more about our programs, impact, and how you can get involved.</p>
+      <a href="contact.html" class="btn" style="margin-top: 1rem;">Get in Touch</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">•© GOD 2025 •</div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Hamburger Menu Toggle
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+
+    if (hamburgerBtn) {
+      hamburgerBtn.addEventListener('click', () => {
+        hamburgerBtn.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        mobileMenuOverlay.classList.toggle('active');
+      });
+    }
+
+    if (mobileMenuOverlay) {
+      mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+    }
+
+    function closeMobileMenu() {
+      if (hamburgerBtn) hamburgerBtn.classList.remove('active');
+      mobileMenu.classList.remove('active');
+      mobileMenuOverlay.classList.remove('active');
+    }
+
+    // Global logout function
+    function performLogout(e) {
+      if (e) e.preventDefault();
+      sessionStorage.clear();
+      sessionStorage.removeItem('siteUnlocked');
+      sessionStorage.removeItem('siteUserName');
+      sessionStorage.removeItem('siteUserEmail');
+      sessionStorage.removeItem('emailVerificationCode');
+      window.location.href = window.location.pathname;
+    }
+
+    function handleLogout(e) {
+      e.preventDefault();
+      performLogout(e);
+    }
+  </script>
+</body>
+</html>
      

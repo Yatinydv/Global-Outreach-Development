@@ -4,109 +4,335 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="emailjs-user" content="VMEkvD76cdnb2sIad">
+  <meta name="emailjs-service" content="god_9813">
+  <meta name="emailjs-template" content="GOD_6728">
   <title>Explore Our Vision</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 240'><text x='100' y='25' font-size='16' font-weight='bold' text-anchor='middle' fill='%234CADE6' letter-spacing='2'>HELPING HANDS</text><path d='M 80 50 Q 50 60 50 100 Q 50 140 80 150' stroke='%232C3E50' stroke-width='6' fill='none' stroke-linecap='round'/><path d='M 120 50 Q 150 60 150 100 Q 150 140 120 150' stroke='%232C3E50' stroke-width='6' fill='none' stroke-linecap='round'/><circle cx='100' cy='100' r='35' fill='none' stroke='%232C3E50' stroke-width='4'/><text x='100' y='120' font-size='48' font-weight='bold' text-anchor='middle' fill='%234CADE6'>GOD</text><text x='100' y='225' font-size='12' font-weight='bold' text-anchor='middle' fill='%234CADE6' letter-spacing='1'>A BETTER WORLD</text></svg>">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    .vision-hero {
+      background: linear-gradient(135deg, rgba(79, 172, 230, 0.15), rgba(44, 62, 80, 0.1));
+      padding: 3rem 2rem;
+      border-radius: 15px;
+      margin: 2rem 0;
+      text-align: center;
+    }
+    .vision-hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      color: #4CADE6;
+      margin: 1.5rem 0 1rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .vision-hero video {
+      margin: 2rem auto;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      max-width: 100%;
+      height: auto;
+    }
+    .vision-section {
+      background: rgba(79, 172, 230, 0.05);
+      padding: 3rem 2rem;
+      border-radius: 12px;
+      margin: 3rem 0;
+      border-left: 5px solid #4CADE6;
+    }
+    .vision-section h2 {
+      color: #4CADE6;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      margin-top: 0;
+      text-align: center;
+    }
+    .vision-section p {
+      font-size: 1.1rem;
+      line-height: 1.9;
+      color: #333;
+      text-align: justify;
+      max-width: 900px;
+      margin: 1.5rem auto;
+    }
+    .future-plans-section {
+      margin: 3rem 0;
+    }
+    .future-plans-section h2 {
+      color: #4CADE6;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      text-align: center;
+      margin-bottom: 2rem;
+      position: relative;
+      padding-bottom: 1rem;
+    }
+    .future-plans-section h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #4CADE6, transparent);
+    }
+    .plans-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .plan-item {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      border-top: 4px solid #4CADE6;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+    .plan-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+    .plan-item::before {
+      content: '✨';
+      font-size: 1.8rem;
+      margin-right: 0.5rem;
+    }
+    .plan-item p {
+      color: #333;
+      line-height: 1.7;
+      font-size: 1rem;
+      margin: 0.5rem 0;
+    }
+    .investment-section {
+      background: linear-gradient(135deg, #4CADE6, #2C3E50);
+      padding: 3rem 2rem;
+      border-radius: 15px;
+      margin: 3rem 0;
+      color: white;
+      text-align: center;
+    }
+    .investment-section h3 {
+      font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+      margin: 1rem 0;
+      line-height: 1.4;
+    }
+    .investment-section p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin: 1rem 0;
+      opacity: 0.95;
+    }
+    .initiative-box {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      border-radius: 10px;
+      margin: 1.5rem 0;
+      border-left: 4px solid rgba(255, 255, 255, 0.3);
+    }
+    .initiative-box h5 {
+      font-size: 1.3rem;
+      margin-top: 0;
+      color: #fff;
+      font-weight: bold;
+    }
+    .initiative-box ul {
+      list-style: none;
+      padding: 0;
+      text-align: left;
+    }
+    .initiative-box li {
+      padding: 0.6rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .initiative-box li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: #4CADE6;
+      font-weight: bold;
+    }
+    .invest-btn {
+      display: inline-block;
+      background: white;
+      color: #4CADE6;
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border-radius: 8px;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      margin-top: 1.5rem;
+    }
+    .invest-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+      background: #f0f0f0;
+    }
+  </style>
 </head>
 
 <body>
   <div class="background-animated" aria-hidden="true"></div>
-  <!doctype html>
-  <html lang="en">
+  <header class="site-header">
+    <div class="container">
+      <h1 class="logo"><svg width="60" height="70" viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg"><text x="100" y="25" font-size="14" font-weight="bold" text-anchor="middle" fill="#4CADE6" letter-spacing="1">HELPING</text><path d="M 80 50 Q 50 65 50 100 Q 50 135 80 145" stroke="#2C3E50" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M 120 50 Q 150 65 150 100 Q 150 135 120 145" stroke="#2C3E50" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="100" cy="100" r="32" fill="none" stroke="#2C3E50" stroke-width="3"/><text x="100" y="115" font-size="40" font-weight="bold" text-anchor="middle" fill="#4CADE6">GOD</text></svg> G.O.D: Global Outreach & Development</h1>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <button class="logout-btn" onclick="handleLogout(event)">Logout</button>
+      </nav>
+      <button class="hamburger-btn" id="hamburger-btn" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
 
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Explore Our Vision</title>
-    <link rel="stylesheet" href="css/style.css">
-  </head>
+  <!-- Mobile Menu -->
+  <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html" onclick="closeMobileMenu()">Home</a>
+    <a href="about.html" onclick="closeMobileMenu()">About</a>
+    <a href="contact.html" onclick="closeMobileMenu()">Contact</a>
+    <a href="#" onclick="handleLogout(event)">Logout</a>
+  </div>
 
-  <body>
-    <div class="background-animated" aria-hidden="true"></div>
-    <header class="site-header">
-      <div class="container">
-        <h1 class="logo"><svg width="60" height="70" viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg"><text x="100" y="25" font-size="14" font-weight="bold" text-anchor="middle" fill="#4CADE6" letter-spacing="1">HELPING</text><path d="M 80 50 Q 50 65 50 100 Q 50 135 80 145" stroke="#2C3E50" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M 120 50 Q 150 65 150 100 Q 150 135 120 145" stroke="#2C3E50" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="100" cy="100" r="32" fill="none" stroke="#2C3E50" stroke-width="3"/><text x="100" y="115" font-size="40" font-weight="bold" text-anchor="middle" fill="#4CADE6">GOD</text></svg> G.O.D: Global Outreach & Development</h1>
-        <nav>
-          <a href="index.html">Home</a>
-          <a href="about.html">About</a>
-          <a href="contact.html">Contact</a>
-        </nav>
-      </div>
-    </header>
+  <main class="container">
+    <div class="vision-hero">
+      <h1>Our Vision and Future Plans</h1>
+      <video id="visionVideo" controls controlsList="nodownload" autoplay muted playsinline loop width="600" height="400" oncontextmenu="return false;">
+        <source src="our future plans.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
 
-    <main class="container">
-      <div class="hero">
-        <div class="hero-blobs" aria-hidden="true">
-          <div class="blob blob1"></div>
-          <div class="blob blob2"></div>
+    <section class="vision-section">
+      <h2>Our Vision</h2>
+      <p>At G.O.D, our vision is to create a world where every individual has access to essential resources, education, and opportunities for growth. We believe in empowering communities to build sustainable futures through collaborative efforts and innovative solutions.</p>
+    </section>
+
+    <section class="future-plans-section">
+      <h2>Future Plans</h2>
+      <div class="plans-list">
+        <div class="plan-item">
+          <p>Expand our outreach programs to underserved regions</p>
         </div>
-        <h1>Our Vision and Future Plans</h1>
-        <video id="visionVideo" controls controlsList="nodownload" autoplay muted playsinline loop width="600" height="400" oncontextmenu="return false;">
-          <source src="our future plans.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-
-      <section class="vision-section">
-        <h2>Our Vision</h2>
-        <p>At G.O.D, our vision is to create a world where every individual has access to essential resources, education, and opportunities for growth. We believe in empowering communities to build sustainable futures through collaborative efforts and innovative solutions.</p>
-      </section>
-
-      <section class="future-plans-section">
-        <h2>Future Plans</h2>
-        <ul>
-            <li style="text-align: center;">Expand our outreach programs to underserved regions</li>
-            <li style="text-align: center;">Develop partnerships with local organizations for greater impact</li>
-            <li style="text-align: center;">Implement technology-driven solutions for education and healthcare</li>
-            <li style="text-align: center;">Launch fundraising campaigns to support new initiatives</li>
-        </ul>
-        <div style="text-align: center;">
-          <h3>Invest in Impact: Our Plan for a Stronger Community</h3>
-          <li>Invest to make change in hundreds of life of people in need.</li>
-          <h4>Forging Futures: Our Plan to Lift Up the Community</h4>
-          <h5>Building Shelters</h5>
-          <li>Join us in our mission to create lasting change and uplift communities through targeted programs and initiatives.</li>
-          <li>Safe Harbors: Creating Welcoming Shelters for Those in Need </li>
-          <li>Community Within: Building Supportive Environments</li>
-          <li>Home is Where the Help Starts: Our Commitment to Housing</li>
-          <h5>Building Warehouses</h5>
-          <li>The Supply Lifeline: Centralizing Aid Distribution</li>
-          <li>Ready for Anything: Preparing for Future Crises with Storage Solutions</li>
-          <li>From Our Warehouse to Your Neighbors: A Seamless Aid Process</li>
+        <div class="plan-item">
+          <p>Develop partnerships with local organizations for greater impact</p>
         </div>
-        
-         <p><a class="btn" href="">Donate now!</a></p>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container">
-        <p>&copy; 2025 G.O.D: Global Outreach & Development. All rights reserved.</p>
+        <div class="plan-item">
+          <p>Implement technology-driven solutions for education and healthcare</p>
+        </div>
+        <div class="plan-item">
+          <p>Launch fundraising campaigns to support new initiatives</p>
+        </div>
       </div>
-    </footer>
 
-    <script>
-      // Attempt to play the video on page load. Autoplay works when muted in most browsers.
-      document.addEventListener('DOMContentLoaded', function () {
-        const v = document.getElementById('visionVideo');
-        if (!v) return;
-        // Ensure muted so autoplay is allowed
-        v.muted = true;
-        const p = v.play();
-        if (p !== undefined) {
-          p.catch(() => {
-            // If autoplay is blocked, wait for first user interaction then try again
-            const retry = () => {
-              v.play().catch(() => {});
-              window.removeEventListener('click', retry);
-              window.removeEventListener('keydown', retry);
-            };
-            window.addEventListener('click', retry);
-            window.addEventListener('keydown', retry);
-          });
-        }
-      });
-    </script>
+      <section class="investment-section">
+        <h3>💡 Invest in Impact: Our Plan for a Stronger Community</h3>
+        <p>Invest to make change in hundreds of lives of people in need.</p>
 
-  </body>
-  </html>
+        <div class="initiative-box">
+          <h5>🏠 Forging Futures: Our Plan to Lift Up the Community</h5>
+          <p style="margin: 1rem 0; font-size: 1rem;">Join us in our mission to create lasting change and uplift communities through targeted programs and initiatives.</p>
+        </div>
+
+        <div class="initiative-box">
+          <h5>🏘️ Building Shelters</h5>
+          <ul>
+            <li>Safe Harbors: Creating Welcoming Shelters for Those in Need</li>
+            <li>Community Within: Building Supportive Environments</li>
+            <li>Home is Where the Help Starts: Our Commitment to Housing</li>
+          </ul>
+        </div>
+
+        <div class="initiative-box">
+          <h5>📦 Building Warehouses</h5>
+          <ul>
+            <li>The Supply Lifeline: Centralizing Aid Distribution</li>
+            <li>Ready for Anything: Preparing for Future Crises with Storage Solutions</li>
+            <li>From Our Warehouse to Your Neighbors: A Seamless Aid Process</li>
+          </ul>
+        </div>
+
+        <a class="invest-btn" href="contact.html">Invest now!</a>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2025 G.O.D: Global Outreach & Development. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Attempt to play the video on page load. Autoplay works when muted in most browsers.
+    document.addEventListener('DOMContentLoaded', function () {
+      const v = document.getElementById('visionVideo');
+      if (!v) return;
+      // Ensure muted so autoplay is allowed
+      v.muted = true;
+      const p = v.play();
+      if (p !== undefined) {
+        p.catch(() => {
+          // If autoplay is blocked, wait for first user interaction then try again
+          const retry = () => {
+            v.play().catch(() => {});
+            window.removeEventListener('click', retry);
+            window.removeEventListener('keydown', retry);
+          };
+          window.addEventListener('click', retry);
+          window.addEventListener('keydown', retry);
+        });
+      }
+    });
+
+      // Hamburger Menu Toggle
+      const hamburgerBtn = document.getElementById('hamburger-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+
+      if (hamburgerBtn) {
+        hamburgerBtn.addEventListener('click', () => {
+          hamburgerBtn.classList.toggle('active');
+          mobileMenu.classList.toggle('active');
+          mobileMenuOverlay.classList.toggle('active');
+        });
+      }
+
+      if (mobileMenuOverlay) {
+        mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+      }
+
+      function closeMobileMenu() {
+        if (hamburgerBtn) hamburgerBtn.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        mobileMenuOverlay.classList.remove('active');
+      }
+
+      // Global logout function
+      function performLogout(e) {
+        if (e) e.preventDefault();
+        sessionStorage.clear();
+        sessionStorage.removeItem('siteUnlocked');
+        sessionStorage.removeItem('siteUserName');
+        sessionStorage.removeItem('siteUserEmail');
+        sessionStorage.removeItem('emailVerificationCode');
+        window.location.href = window.location.pathname;
+      }
+
+      function handleLogout(e) {
+        e.preventDefault();
+        performLogout(e);
+      }
+</html>

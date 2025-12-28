@@ -3,81 +3,345 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="emailjs-user" content="VMEkvD76cdnb2sIad">
+  <meta name="emailjs-service" content="god_9813">
+  <meta name="emailjs-template" content="GOD_6728">
   <title>contact.god.com</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 240'><text x='100' y='25' font-size='16' font-weight='bold' text-anchor='middle' fill='%234CADE6' letter-spacing='2'>HELPING HANDS</text><path d='M 80 50 Q 50 60 50 100 Q 50 140 80 150' stroke='%232C3E50' stroke-width='6' fill='none' stroke-linecap='round'/><path d='M 120 50 Q 150 60 150 100 Q 150 140 120 150' stroke='%232C3E50' stroke-width='6' fill='none' stroke-linecap='round'/><circle cx='100' cy='100' r='35' fill='none' stroke='%232C3E50' stroke-width='4'/><text x='100' y='120' font-size='48' font-weight='bold' text-anchor='middle' fill='%234CADE6'>GOD</text><text x='100' y='225' font-size='12' font-weight='bold' text-anchor='middle' fill='%234CADE6' letter-spacing='1'>A BETTER WORLD</text></svg>">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    .contact-hero {
+      background: linear-gradient(135deg, rgba(79, 172, 230, 0.15), rgba(44, 62, 80, 0.1));
+      padding: 4rem 2rem;
+      border-radius: 20px;
+      margin: 2rem 0;
+      text-align: center;
+    }
+    .contact-hero h2 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      color: #4CADE6;
+      margin: 1.5rem 0 1rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    .contact-hero p {
+      font-size: clamp(1rem, 2vw, 1.1rem);
+      color: #2C3E50;
+      line-height: 1.8;
+      max-width: 700px;
+      margin: 1rem auto;
+      font-weight: 500;
+    }
+    .contact-intro {
+      text-align: center;
+      padding: 2rem 0;
+      margin: 2rem 0;
+    }
+    .contact-intro h3 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      color: #4CADE6;
+      margin: 0 0 1rem;
+      font-weight: bold;
+    }
+    .contact-intro p {
+      font-size: 1.05rem;
+      color: #2C3E50;
+      line-height: 1.8;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .contact-methods {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+    .contact-method {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      border-top: 4px solid #4CADE6;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    .contact-method:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 28px rgba(79, 172, 230, 0.2);
+    }
+    .contact-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .contact-method h4 {
+      color: #4CADE6;
+      font-size: 1.2rem;
+      margin: 0 0 0.8rem;
+    }
+    .contact-method p {
+      color: #555;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+    .form-container {
+      background: white;
+      padding: 3rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      margin: 3rem 0;
+      border-top: 5px solid #4CADE6;
+    }
+    .form-container h3 {
+      color: #4CADE6;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      text-align: center;
+      margin: 0 0 2rem;
+      font-weight: bold;
+    }
+    .form-container label {
+      display: block;
+      color: #2C3E50;
+      font-weight: 600;
+      margin: 1.5rem 0 0.5rem;
+      font-size: 0.95rem;
+    }
+    .form-container input,
+    .form-container textarea {
+      width: 100%;
+      padding: 0.9rem;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: inherit;
+      transition: all 0.3s ease;
+      box-sizing: border-box;
+    }
+    .form-container input:focus,
+    .form-container textarea:focus {
+      outline: none;
+      border-color: #4CADE6;
+      box-shadow: 0 0 0 3px rgba(79, 172, 230, 0.1);
+    }
+    .form-container textarea {
+      resize: vertical;
+    }
+    .send-btn {
+      background: linear-gradient(135deg, #4CADE6, #2F9BF3);
+      color: white;
+      padding: 1rem 2.5rem;
+      font-size: 1.05rem;
+      font-weight: bold;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      margin-top: 1.5rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 20px rgba(79, 172, 230, 0.3);
+    }
+    .send-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(79, 172, 230, 0.4);
+    }
+    #form-feedback {
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: 600;
+      min-height: 1.5em;
+    }
+    #form-feedback.success {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+    #form-feedback.error {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(44, 62, 80, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      backdrop-filter: blur(3px);
+    }
+    .modal[aria-hidden="true"] {
+      display: none;
+    }
+    .modal-content {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 15px;
+      max-width: 500px;
+      width: 90%;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      border-top: 5px solid #4CADE6;
+      position: relative;
+    }
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      font-size: 2rem;
+      cursor: pointer;
+      color: #999;
+      transition: color 0.3s ease;
+    }
+    .modal-close:hover {
+      color: #4CADE6;
+    }
+    .modal-content h3 {
+      color: #4CADE6;
+      font-size: 1.8rem;
+      margin: 0 0 1rem;
+    }
+    .modal-content p {
+      color: #555;
+      font-size: 1rem;
+      line-height: 1.6;
+      margin: 1rem 0;
+    }
+    .modal-ok {
+      background: linear-gradient(135deg, #4CADE6, #2F9BF3);
+      color: white;
+      padding: 0.8rem 2rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .modal-ok:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(79, 172, 230, 0.3);
+    }
+    .response-time {
+      background: linear-gradient(135deg, rgba(79, 172, 230, 0.1), rgba(44, 62, 80, 0.05));
+      padding: 2rem;
+      border-radius: 12px;
+      margin: 2rem 0;
+      border-left: 4px solid #4CADE6;
+      text-align: center;
+    }
+    .response-time h4 {
+      color: #4CADE6;
+      margin: 0 0 0.8rem;
+      font-size: 1.1rem;
+    }
+    .response-time p {
+      color: #555;
+      margin: 0;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+  </style>
 </head>
 <body>
   <div class="background-animated" aria-hidden="true"></div>
   <header class="site-header">
     <div class="container">
       <h1 class="logo"><svg width="60" height="70" viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg"><text x="100" y="25" font-size="14" font-weight="bold" text-anchor="middle" fill="#4CADE6" letter-spacing="1">HELPING</text><path d="M 80 50 Q 50 65 50 100 Q 50 135 80 145" stroke="#2C3E50" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M 120 50 Q 150 65 150 100 Q 150 135 120 145" stroke="#2C3E50" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="100" cy="100" r="32" fill="none" stroke="#2C3E50" stroke-width="3"/><text x="100" y="115" font-size="40" font-weight="bold" text-anchor="middle" fill="#4CADE6">GOD</text></svg> G.O.D: Global Outreach & Development</h1>
-      <div class="header-controls">
-        <nav>
-          <a href="index.html">Home</a>
-          <a href="about.html">About</a>
-          <a href="contact.html">Contact</a>
-        </nav>
-        <button id="login-btn" class="login-btn" aria-haspopup="dialog" aria-controls="auth-overlay">Login</button>
-      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <button class="logout-btn" onclick="handleLogout(event)">Logout</button>
+      </nav>
+      <button class="hamburger-btn" id="hamburger-btn" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </header>
 
-  <!-- Authentication overlay — blocks access until unlocked (client-side gate) -->
-  <div id="auth-overlay" class="auth-overlay" aria-hidden="false">
-    <div class="auth-panel" role="dialog" aria-modal="true" aria-labelledby="auth-title">
-      <h2 id="auth-title">Site access</h2>
-      <p>Enter your name and email to access the site</p>
-
-      <label for="site-name">Name</label>
-      <input id="site-name" class="auth-input" type="text" autocomplete="name" placeholder="Your name" />
-
-      <label for="site-email">Email</label>
-      <input id="site-email" class="auth-input" type="email" autocomplete="email" placeholder="you@example.com" />
-
-      <div class="auth-actions">
-        <button id="auth-submit" class="btn">Login</button>
-      </div>
-      <p class="auth-note"></p>
-    </div>
+  <!-- Mobile Menu -->
+  <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html" onclick="closeMobileMenu()">Home</a>
+    <a href="about.html" onclick="closeMobileMenu()">About</a>
+    <a href="contact.html" onclick="closeMobileMenu()">Contact</a>
+    <a href="#" onclick="handleLogout(event)">Logout</a>
   </div>
 
   <main class="container">
-  <div class="hero">
-      <div class="hero-blobs" aria-hidden="true">
-        <div class="blob blob1"></div>
-        <div class="blob blob2"></div>
-      </div>
-      <h2>Contact</h2>
+    <div class="contact-hero">
+      <h2>📞 Get In Touch With Us</h2>
+      <p>If you have questions, suggestions or query, type your message and send us.</p>
+      <p>We are try to reply your message.</p>
     </div>
-    <p>If you have questions, suggestions or query, type your message and send us.</p>
-    <p>We are try to reply your message.<code></code> </p>
 
-    <!-- To send messages automatically you can use EmailJS (client-side) or Formspree (POST).
-      Fill the data-emailjs-* attributes below or a data-endpoint for Formspree. -->
-  <div class="form-container">
-  <form id="contact-form" action="mailto:yatinyadav8116@gmail.com" method="GET" data-endpoint="https://formspree.io/f/mldpolkr" data-emailjs-service="YOUR_SERVICE_ID" data-emailjs-template="YOUR_TEMPLATE_ID" data-emailjs-user="YOUR_PUBLIC_KEY">
-      <label for="Name">Name</label>
-      <input id="Name" name="Name" required>
+    <section class="contact-intro">
+      <h3>🤝 We'd Love to Hear From You</h3>
+      <p>Whether you have a question about our programs, want to partner with us, need support, or just want to say hello—we're here to listen. Your voice matters, and your feedback helps us serve communities better.</p>
+    </section>
 
-      <label for="email">Email</label>
-      <input id="email" name="email" type="email" required>
-
-      <label for="message">Message</label>
-      <textarea id="message" name="message" rows="5" required></textarea>
-      <button type="submit" class="btn send-btn">Send</button>
-      <div id="form-feedback" role="status" aria-live="polite"></div>
-    </form>
-  </div>
-      <!-- Success modal shown after successful submit -->
-      <div id="success-modal" class="modal" aria-hidden="true">
-        <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-          <button class="modal-close" aria-label="Close">×</button>
-          <h3 id="modal-title">Message sent</h3>
-          <p>Thanks — your message has been sent. We'll get back to you soon.</p>
-          <div style="text-align:right;margin-top:1rem;"><button class="btn modal-ok">OK</button></div>
-        </div>
+    <div class="contact-methods">
+      <div class="contact-method">
+        <div class="contact-icon">💬</div>
+        <h4>Send a Message</h4>
+        <p>Use the form below to send us your questions, suggestions, or inquiries. We'll respond as soon as possible.</p>
       </div>
+      <div class="contact-method">
+        <div class="contact-icon">⚡</div>
+        <h4>Quick Response</h4>
+        <p>We aim to respond to all messages within 24-48 hours during business days.</p>
+      </div>
+      <div class="contact-method">
+        <div class="contact-icon">🌍</div>
+        <h4>Global Community</h4>
+        <p>We serve communities worldwide. Your message could help us reach those who need us most.</p>
+      </div>
+    </div>
+
+    <div class="form-container">
+      <h3>✉️ Send Us Your Message</h3>
+      <form id="contact-form" action="mailto:yatinyadav8116@gmail.com" method="GET" data-endpoint="https://formspree.io/f/mldpolkr" data-emailjs-service="YOUR_SERVICE_ID" data-emailjs-template="YOUR_TEMPLATE_ID" data-emailjs-user="YOUR_PUBLIC_KEY">
+        <label for="Name">Your Name</label>
+        <input id="Name" name="Name" type="text" placeholder="Enter your full name" required>
+
+        <label for="email">Your Email</label>
+        <input id="email" name="email" type="email" placeholder="Enter your email address" required>
+
+        <label for="message">Your Message</label>
+        <textarea id="message" name="message" rows="5" placeholder="Tell us what's on your mind..." required></textarea>
+        <button type="submit" class="btn send-btn">Send Message</button>
+        <div id="form-feedback" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+
+    <div class="response-time">
+      <h4>⏱️ Expected Response Time</h4>
+      <p>We respond to most inquiries within 24-48 business hours. For urgent matters, please mark your subject as "URGENT" in your message.</p>
+    </div>
+
+    <section class="contact-intro">
+      <h3>🙏 Thank You for Reaching Out</h3>
+      <p>Every message, every question, and every inquiry helps us understand your needs better. Whether you're interested in donating, volunteering, partnering, or simply want to know more about our mission—we're excited to connect with you.</p>
+    </section>
+
+    <!-- Success modal shown after successful submit -->
+    <div id="success-modal" class="modal" aria-hidden="true">
+      <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <button class="modal-close" aria-label="Close">×</button>
+        <h3 id="modal-title">✅ Message Sent Successfully</h3>
+        <p>Thanks for reaching out! Your message has been sent successfully. We'll review it and get back to you as soon as possible.</p>
+        <p style="font-size: 0.9rem; color: #999;">Expected response time: 24-48 hours</p>
+        <div style="text-align:right;margin-top:1rem;"><button class="btn modal-ok">OK</button></div>
+      </div>
+    </div>
   </main>
 
   <footer class="site-footer">
@@ -85,5 +349,45 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script>
+    // Hamburger Menu Toggle
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+
+    if (hamburgerBtn) {
+      hamburgerBtn.addEventListener('click', () => {
+        hamburgerBtn.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        mobileMenuOverlay.classList.toggle('active');
+      });
+    }
+
+    if (mobileMenuOverlay) {
+      mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+    }
+
+    function closeMobileMenu() {
+      if (hamburgerBtn) hamburgerBtn.classList.remove('active');
+      mobileMenu.classList.remove('active');
+      mobileMenuOverlay.classList.remove('active');
+    }
+
+    // Global logout function
+    function performLogout(e) {
+      if (e) e.preventDefault();
+      sessionStorage.clear();
+      sessionStorage.removeItem('siteUnlocked');
+      sessionStorage.removeItem('siteUserName');
+      sessionStorage.removeItem('siteUserEmail');
+      sessionStorage.removeItem('emailVerificationCode');
+      window.location.href = window.location.pathname;
+    }
+
+    function handleLogout(e) {
+      e.preventDefault();
+      performLogout(e);
+    }
+  </script>
 </body>
 </html>

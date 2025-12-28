@@ -4,9 +4,183 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="emailjs-user" content="VMEkvD76cdnb2sIad">
+  <meta name="emailjs-service" content="god_9813">
+  <meta name="emailjs-template" content="GOD_6728">
   <title>mission.god</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 240'><text x='100' y='25' font-size='16' font-weight='bold' text-anchor='middle' fill='%234CADE6' letter-spacing='2'>HELPING HANDS</text><path d='M 80 50 Q 50 60 50 100 Q 50 140 80 150' stroke='%232C3E50' stroke-width='6' fill='none' stroke-linecap='round'/><path d='M 120 50 Q 150 60 150 100 Q 150 140 120 150' stroke='%232C3E50' stroke-width='6' fill='none' stroke-linecap='round'/><circle cx='100' cy='100' r='35' fill='none' stroke='%232C3E50' stroke-width='4'/><text x='100' y='120' font-size='48' font-weight='bold' text-anchor='middle' fill='%234CADE6'>GOD</text><text x='100' y='225' font-size='12' font-weight='bold' text-anchor='middle' fill='%234CADE6' letter-spacing='1'>A BETTER WORLD</text></svg>">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    .mission-hero {
+      background: linear-gradient(135deg, rgba(79, 172, 230, 0.15), rgba(44, 62, 80, 0.1));
+      padding: 4rem 2rem;
+      border-radius: 20px;
+      margin: 2rem 0;
+      text-align: center;
+    }
+    .mission-hero h2 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      color: #4CADE6;
+      margin: 1.5rem 0 1rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      line-height: 1.3;
+    }
+    .mission-statement {
+      background: white;
+      padding: 3rem 2rem;
+      border-radius: 15px;
+      margin: 3rem 0;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      border-left: 5px solid #4CADE6;
+    }
+    .mission-statement p1 {
+      font-size: 1.05rem;
+      color: #2C3E50;
+      line-height: 1.9;
+      text-align: justify;
+    }
+    .mission-section {
+      background: white;
+      padding: 3rem 2rem;
+      border-radius: 15px;
+      margin: 2rem 0;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      border-top: 5px solid #4CADE6;
+      transition: all 0.3s ease;
+    }
+    .mission-section:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(79, 172, 230, 0.15);
+    }
+    .mission-section h3 {
+      color: #4CADE6;
+      font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+      margin: 0 0 1rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .mission-section h4 {
+      color: #4CADE6;
+      font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+      margin: 0 0 1rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .mission-section h5 {
+      color: #4CADE6;
+      font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+      margin: 0 0 1rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .mission-section p2,
+    .mission-section p3,
+    .mission-section p4 {
+      font-size: 1.05rem;
+      color: #555;
+      line-height: 1.9;
+      text-align: justify;
+      margin: 0;
+    }
+    .section-icon {
+      font-size: 1.8rem;
+    }
+    .mission-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+    .mission-card {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      border-top: 4px solid #4CADE6;
+      transition: all 0.3s ease;
+    }
+    .mission-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 28px rgba(79, 172, 230, 0.2);
+    }
+    .mission-card h4 {
+      color: #4CADE6;
+      font-size: 1.3rem;
+      margin: 0 0 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .mission-card p {
+      color: #555;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin: 0;
+    }
+    .intro-section {
+      text-align: center;
+      padding: 2rem 0;
+      margin: 2rem 0;
+    }
+    .intro-section h3 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      color: #4CADE6;
+      margin: 0 0 1rem;
+      font-weight: bold;
+    }
+    .intro-section p {
+      font-size: 1.05rem;
+      color: #2C3E50;
+      line-height: 1.8;
+      max-width: 800px;
+      margin: 0 auto;
+      font-weight: 500;
+    }
+    .cta-section {
+      background: linear-gradient(135deg, #4CADE6, #2C3E50);
+      color: white;
+      padding: 3rem 2rem;
+      border-radius: 15px;
+      margin: 3rem 0;
+      text-align: center;
+    }
+    .cta-section h3 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      margin: 0 0 1rem;
+    }
+    .cta-section p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: white;
+      color: #4CADE6;
+      padding: 1rem 2.5rem;
+      font-size: 1.05rem;
+      font-weight: bold;
+      border-radius: 8px;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    }
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+      background: #f0f0f0;
+    }
+  </style>
 </head>
 
 <body>
@@ -18,31 +192,112 @@
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
+        <button class="logout-btn" onclick="handleLogout(event)">Logout</button>
       </nav>
+      <button class="hamburger-btn" id="hamburger-btn" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </header>
 
+  <!-- Mobile Menu -->
+  <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html" onclick="closeMobileMenu()">Home</a>
+    <a href="about.html" onclick="closeMobileMenu()">About</a>
+    <a href="contact.html" onclick="closeMobileMenu()">Contact</a>
+    <a href="#" onclick="handleLogout(event)">Logout</a>
+  </div>
+
   <main class="container">
-    <div class="hero">
-      <div class="hero-blobs" aria-hidden="true">
-        <div class="blob blob1"></div>
-        <div class="blob blob2"></div>
-      </div>
-      <h2>Our Mission: A Better World for Everyone</h2>
-      <p1>core mission is simple yet profound: to make the world a better place for everyone. We believe in the power of collective action and the direct impact of individual kindness. Our platform serves as a bridge, connecting compassionate donors with individuals and communities in need across the globe. By fostering transparency and building trust, we aim to create a sustainable cycle of giving, where every contribution helps lay the foundation for a brighter, more equitable future for all.</p1> 
-      <h3>Ways to Make an Impact: Donate Today</h3>
+    <div class="mission-hero">
+      <h2>🎯 Our Mission: A Better World for Everyone</h2>
+    </div>
+
+    <section class="intro-section">
+      <h3>💡 Why We Do What We Do</h3>
+      <p>Our core mission is simple yet profound: to make the world a better place for everyone. We believe in the power of collective action and the direct impact of individual kindness.</p>
+    </section>
+
+    <section class="mission-statement">
+      <p1>Our platform serves as a bridge, connecting compassionate donors with individuals and communities in need across the globe. By fostering transparency and building trust, we aim to create a sustainable cycle of giving, where every contribution helps lay the foundation for a brighter, more equitable future for all.</p1>
+    </section>
+
+    <section class="mission-section">
+      <h3><span class="section-icon">💝</span> Ways to Make an Impact: Donate Today</h3>
       <p2>We provide multiple avenues for you to contribute to this mission, accommodating various forms of generosity. Whether you wish to give monetarily, donate gently used clothing, or contribute other essential items, your support is vital. Our platform securely processes donations and provides clear instructions for item contributions, ensuring your generosity reaches those who need it most efficiently. Every donation, no matter the size or form, fuels our projects and changes lives.</p2>
-      <h4>Transparency in Action: See Your Impact</h4>
+    </section>
+
+    <section class="mission-section">
+      <h4><span class="section-icon">🔍</span> Transparency in Action: See Your Impact</h4>
       <p3>We are committed to complete transparency, allowing you to see exactly how your contribution is used. Through your personalized donor dashboard, you can track the journey of your donation. This unique feature enables you to view the past condition of the recipients before our intervention, see their present condition after receiving help, and witness the tangible improvements your kindness has made. We provide real-time updates and success stories to assure you that your help is reaching its intended destination and making a genuine difference.</p3>
-      <h5>Investing in the Future: Our Vision</h5>
+    </section>
+
+    <section class="mission-section">
+      <h5><span class="section-icon">🚀</span> Investing in the Future: Our Vision</h5>
       <p4>For those interested in long-term impact and strategic involvement, we offer opportunities to invest in our company's future plans. We have ambitious goals for expanding our reach and developing innovative solutions to global challenges. Our site provides detailed information on our strategic objectives, financial transparency reports, and how potential investments will be leveraged to scale our operations and achieve sustainable, large-scale social change. We welcome partners who share our vision and want to be part of building a better world for generations to come.</p4>
-      </main>
+    </section>
+
+    <section class="intro-section">
+      <h3>🤝 Join Our Movement</h3>
+      <p>Whether you're a donor, volunteer, partner, or advocate, you have a vital role to play in our mission. Together, we can create lasting change and build a world where everyone has access to opportunity, dignity, and hope.</p>
+    </section>
+
+    <section class="cta-section">
+      <h3>Ready to Make a Difference?</h3>
+      <p>Every action, no matter how small, contributes to our collective mission. Start your journey with us today and become part of a global movement transforming lives.</p>
+      <a href="Our Impact History.html" class="cta-btn">Donate Now & See Your Impact</a>
+    </section>
+
+  </main>
 
   <footer class="site-footer">
     <div class="container">© GOD 2025</div>
   </footer>
 
   <script src="js/main.js"></script>
+  <script>
+    // Hamburger Menu Toggle
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+
+    if (hamburgerBtn) {
+      hamburgerBtn.addEventListener('click', () => {
+        hamburgerBtn.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        mobileMenuOverlay.classList.toggle('active');
+      });
+    }
+
+    if (mobileMenuOverlay) {
+      mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+    }
+
+    function closeMobileMenu() {
+      hamburgerBtn.classList.remove('active');
+      mobileMenu.classList.remove('active');
+      mobileMenuOverlay.classList.remove('active');
+    }
+
+    // Global logout function
+    function performLogout(e) {
+      if (e) e.preventDefault();
+      sessionStorage.clear();
+      sessionStorage.removeItem('siteUnlocked');
+      sessionStorage.removeItem('siteUserName');
+      sessionStorage.removeItem('siteUserEmail');
+      sessionStorage.removeItem('emailVerificationCode');
+      window.location.href = window.location.pathname;
+    }
+
+    function handleLogout(e) {
+      e.preventDefault();
+      performLogout(e);
+    }
+  </script>
 </body>
 
 </html>

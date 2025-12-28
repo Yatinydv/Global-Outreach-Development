@@ -4,29 +4,471 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="emailjs-user" content="VMEkvD76cdnb2sIad">
+  <meta name="emailjs-service" content="god_9813">
+  <meta name="emailjs-template" content="GOD_6728">
   <title>Witness the Change</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 240'><text x='100' y='25' font-size='16' font-weight='bold' text-anchor='middle' fill='%234CADE6' letter-spacing='2'>HELPING HANDS</text><path d='M 80 50 Q 50 60 50 100 Q 50 140 80 150' stroke='%232C3E50' stroke-width='6' fill='none' stroke-linecap='round'/><path d='M 120 50 Q 150 60 150 100 Q 150 140 120 150' stroke='%232C3E50' stroke-width='6' fill='none' stroke-linecap='round'/><circle cx='100' cy='100' r='35' fill='none' stroke='%232C3E50' stroke-width='4'/><text x='100' y='120' font-size='48' font-weight='bold' text-anchor='middle' fill='%234CADE6'>GOD</text><text x='100' y='225' font-size='12' font-weight='bold' text-anchor='middle' fill='%234CADE6' letter-spacing='1'>A BETTER WORLD</text></svg>">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    .tracking-hero {
+      background: linear-gradient(135deg, rgba(79, 172, 230, 0.2), rgba(44, 62, 80, 0.15));
+      padding: 3rem 2rem;
+      border-radius: 15px;
+      margin: 2rem 0;
+      text-align: center;
+    }
+    .tracking-hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      color: #4CADE6;
+      margin: 1.5rem 0 0.5rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    .tracking-hero .subtitle {
+      font-size: 1.2rem;
+      color: #2C3E50;
+      line-height: 1.6;
+      max-width: 700px;
+      margin: 1rem auto;
+    }
+    .tracking-dashboard {
+      background: white;
+      padding: 3rem 2rem;
+      border-radius: 15px;
+      margin: 3rem 0;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    .dashboard-title {
+      text-align: center;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      color: #4CADE6;
+      margin-bottom: 0.5rem;
+      position: relative;
+      padding-bottom: 1rem;
+    }
+    .dashboard-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #4CADE6, transparent);
+    }
+    .real-time-tracker {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+    .tracker-card {
+      background: linear-gradient(135deg, rgba(79, 172, 230, 0.1), rgba(79, 172, 230, 0.05));
+      padding: 2rem;
+      border-radius: 10px;
+      text-align: center;
+      border: 2px solid #4CADE6;
+      transition: all 0.3s ease;
+    }
+    .tracker-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(79, 172, 230, 0.2);
+    }
+    .tracker-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .tracker-number {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: bold;
+      color: #4CADE6;
+      margin: 0.5rem 0;
+    }
+    .tracker-label {
+      color: #2C3E50;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .donation-flow {
+      background: linear-gradient(135deg, rgba(79, 172, 230, 0.08), rgba(44, 62, 80, 0.05));
+      padding: 3rem 2rem;
+      border-radius: 15px;
+      margin: 3rem 0;
+    }
+    .donation-flow h2 {
+      text-align: center;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      color: #4CADE6;
+      margin-bottom: 2rem;
+    }
+    .flow-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+    .flow-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      border-top: 4px solid #4CADE6;
+      transition: all 0.3s ease;
+    }
+    .flow-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    }
+    .flow-percentage {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #4CADE6;
+      margin-bottom: 0.5rem;
+    }
+    .flow-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #2C3E50;
+      margin-bottom: 1rem;
+    }
+    .flow-description {
+      font-size: 0.95rem;
+      color: #555;
+      line-height: 1.6;
+    }
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 1rem;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #4CADE6, #2C3E50);
+      border-radius: 10px;
+    }
+    .impact-testimonials {
+      background: linear-gradient(135deg, #4CADE6, #2C3E50);
+      color: white;
+      padding: 3rem 2rem;
+      border-radius: 15px;
+      margin: 3rem 0;
+    }
+    .impact-testimonials h2 {
+      text-align: center;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      margin-bottom: 2rem;
+    }
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+    .testimonial-card {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      border-radius: 10px;
+      border-left: 4px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+    }
+    .testimonial-text {
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+    .testimonial-author {
+      font-weight: bold;
+      color: #fff;
+    }
+    .tracking-step {
+      background: white;
+      padding: 2rem;
+      margin: 1.5rem 0;
+      border-radius: 10px;
+      border-left: 5px solid #4CADE6;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+    .step-number {
+      display: inline-block;
+      background: #4CADE6;
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 40px;
+      font-weight: bold;
+      margin-right: 1rem;
+      margin-bottom: 1rem;
+    }
+    .step-content h3 {
+      color: #4CADE6;
+      margin: 0;
+      display: inline;
+      font-size: 1.2rem;
+    }
+    .step-content p {
+      color: #555;
+      margin: 1rem 0 0 3.5rem;
+      line-height: 1.6;
+    }
+    .cta-button {
+      display: inline-block;
+      background: linear-gradient(135deg, #4CADE6, #2C3E50);
+      color: white;
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border-radius: 8px;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      margin-top: 1.5rem;
+    }
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    }
+    .tracking-stats-section {
+      text-align: center;
+      padding: 2rem 0;
+    }
+    .stats-intro {
+      font-size: 1.1rem;
+      color: #2C3E50;
+      line-height: 1.8;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+    }
+  </style>
 </head>
 
 <body>
   <div class="background-animated" aria-hidden="true"></div>
   <header class="site-header">
     <div class="container">
-      <h1 class="logo">G.O.D: Global Outreach & Development</h1>
+      <h1 class="logo"><svg width="60" height="70" viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg"><text x="100" y="25" font-size="14" font-weight="bold" text-anchor="middle" fill="#4CADE6" letter-spacing="1">HELPING</text><path d="M 80 50 Q 50 65 50 100 Q 50 135 80 145" stroke="#2C3E50" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M 120 50 Q 150 65 150 100 Q 150 135 120 145" stroke="#2C3E50" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="100" cy="100" r="32" fill="none" stroke="#2C3E50" stroke-width="3"/><text x="100" y="115" font-size="40" font-weight="bold" text-anchor="middle" fill="#4CADE6">GOD</text></svg> G.O.D: Global Outreach & Development</h1>
       <nav>
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
+        <button class="logout-btn" onclick="handleLogout(event)">Logout</button>
       </nav>
+      <button class="hamburger-btn" id="hamburger-btn" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </header>
 
+  <!-- Mobile Menu -->
+  <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html" onclick="closeMobileMenu()">Home</a>
+    <a href="about.html" onclick="closeMobileMenu()">About</a>
+    <a href="contact.html" onclick="closeMobileMenu()">Contact</a>
+    <a href="#" onclick="handleLogout(event)">Logout</a>
+  </div>
+
   <main class="container">
-    <div class="hero">
-      <div class="hero-blobs" aria-hidden="true">
-        <div class="blob blob1"></div>
-        <div class="blob blob2"></div>
+    <div class="tracking-hero">
+      <h1>🎯 Track Your Donation Impact</h1>
+      <p class="subtitle">See exactly how your generosity transforms lives in real-time. Every donation creates measurable change.</p>
+    </div>
+
+    <section class="tracking-dashboard">
+      <h2 class="dashboard-title">✨ Real-Time Impact Tracker</h2>
+      <p class="stats-intro">Your donation journey from the moment you give to the moment it transforms a life. Watch in real-time as your contribution creates ripples of positive change.</p>
+      
+      <div class="real-time-tracker">
+        <div class="tracker-card">
+          <div class="tracker-icon">💰</div>
+          <div class="tracker-number">$50,450</div>
+          <div class="tracker-label">Total Donations</div>
+        </div>
+        <div class="tracker-card">
+          <div class="tracker-icon">👥</div>
+          <div class="tracker-number">2,380</div>
+          <div class="tracker-label">Lives Changed</div>
+        </div>
+        <div class="tracker-card">
+          <div class="tracker-icon">🌍</div>
+          <div class="tracker-number">45</div>
+          <div class="tracker-label">Communities Reached</div>
+        </div>
+        <div class="tracker-card">
+          <div class="tracker-icon">✅</div>
+          <div class="tracker-number">94%</div>
+          <div class="tracker-label">Impact Efficiency</div>
+        </div>
       </div>
-       <h1>Track your donation</h1>
-      <li>We provide real time tracking of your donation, so that you see how many life you change by your donation</li>
-      <img src="" alt="">
+    </section>
+
+    <section class="donation-flow">
+      <h2>💡 Where Your Donation Goes</h2>
+      <div class="flow-container">
+        <div class="flow-card">
+          <div class="flow-percentage">40%</div>
+          <div class="flow-title">📚 Education & Skills</div>
+          <div class="flow-description">Scholarships, training programs, and learning resources that empower people to build better futures.</div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 40%;"></div>
+          </div>
+        </div>
+        
+        <div class="flow-card">
+          <div class="flow-percentage">35%</div>
+          <div class="flow-title">🏥 Healthcare & Wellness</div>
+          <div class="flow-description">Medical supplies, health centers, and wellness programs bringing care to underserved communities.</div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 35%;"></div>
+          </div>
+        </div>
+        
+        <div class="flow-card">
+          <div class="flow-percentage">15%</div>
+          <div class="flow-title">🏠 Basic Needs & Shelter</div>
+          <div class="flow-description">Emergency relief, shelter programs, and essential supplies for vulnerable populations.</div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 15%;"></div>
+          </div>
+        </div>
+        
+        <div class="flow-card">
+          <div class="flow-percentage">10%</div>
+          <div class="flow-title">⚙️ Operations & Growth</div>
+          <div class="flow-description">Transparent operations management ensuring we keep serving communities and scaling our impact.</div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 10%;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tracking-step">
+      <div>
+        <span class="step-number">1</span>
+        <div class="step-content">
+          <h3>You Make Your Donation</h3>
+          <p>Choose an amount and cause close to your heart. Every contribution, no matter the size, creates real impact.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="tracking-step">
+      <div>
+        <span class="step-number">2</span>
+        <div class="step-content">
+          <h3>We Verify & Process</h3>
+          <p>Your donation is securely processed and allocated to the most urgent needs in our network of communities.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="tracking-step">
+      <div>
+        <span class="step-number">3</span>
+        <div class="step-content">
+          <h3>Real-Time Tracking Begins</h3>
+          <p>You receive a unique tracking ID to monitor your donation's journey from fund to implementation.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="tracking-step">
+      <div>
+        <span class="step-number">4</span>
+        <div class="step-content">
+          <h3>Witness the Transformation</h3>
+          <p>See updates, photos, and testimonials from beneficiaries whose lives were changed by your generosity.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="impact-testimonials">
+      <h2>🌟 Stories of Transformation</h2>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-text">"Thanks to donors like you, I received a scholarship and I'm now studying engineering. My dream is becoming reality!"</div>
+          <div class="testimonial-author">— Rashida, Education Scholar</div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="testimonial-text">"The health center funded by donors saved my child's life. We finally have access to quality healthcare."</div>
+          <div class="testimonial-author">— Maria, Mother of Two</div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="testimonial-text">"Your donations helped me start a small business. Now I earn enough to support my entire family with dignity."</div>
+          <div class="testimonial-author">— Samuel, Small Business Owner</div>
+        </div>
+      </div>
+    </section>
+
+    <div style="text-align: center; padding: 2rem 0; margin: 2rem 0;">
+      <h2 style="color: #4CADE6; font-size: 2rem; margin-bottom: 1rem;">Ready to Start Your Impact Journey?</h2>
+      <p style="color: #2C3E50; font-size: 1.1rem; max-width: 600px; margin: 0 auto 2rem; line-height: 1.6;">Join thousands of donors who are witnessing real change. Your donation today creates trackable impact tomorrow.</p>
+      <a class="cta-button" href="Our Impact History.html">Make a Donation Today</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2025 G.O.D: Global Outreach & Development. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Hamburger Menu Toggle
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+
+    if (hamburgerBtn) {
+      hamburgerBtn.addEventListener('click', () => {
+        hamburgerBtn.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        mobileMenuOverlay.classList.toggle('active');
+      });
+    }
+
+    if (mobileMenuOverlay) {
+      mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+    }
+
+    function closeMobileMenu() {
+      if (hamburgerBtn) hamburgerBtn.classList.remove('active');
+      mobileMenu.classList.remove('active');
+      mobileMenuOverlay.classList.remove('active');
+    }
+
+    // Global logout function
+    function performLogout(e) {
+      if (e) e.preventDefault();
+      sessionStorage.clear();
+      sessionStorage.removeItem('siteUnlocked');
+      sessionStorage.removeItem('siteUserName');
+      sessionStorage.removeItem('siteUserEmail');
+      sessionStorage.removeItem('emailVerificationCode');
+      window.location.href = window.location.pathname;
+    }
+
+    function handleLogout(e) {
+      e.preventDefault();
+      performLogout(e);
+    }
+  </script>
+</body>
+</html>
+      

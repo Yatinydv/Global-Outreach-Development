@@ -4,9 +4,161 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="emailjs-user" content="VMEkvD76cdnb2sIad">
+  <meta name="emailjs-service" content="god_9813">
+  <meta name="emailjs-template" content="GOD_6728">
   <title>about.god</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 240'><text x='100' y='25' font-size='16' font-weight='bold' text-anchor='middle' fill='%234CADE6' letter-spacing='2'>HELPING HANDS</text><path d='M 80 50 Q 50 60 50 100 Q 50 140 80 150' stroke='%232C3E50' stroke-width='6' fill='none' stroke-linecap='round'/><path d='M 120 50 Q 150 60 150 100 Q 150 140 120 150' stroke='%232C3E50' stroke-width='6' fill='none' stroke-linecap='round'/><circle cx='100' cy='100' r='35' fill='none' stroke='%232C3E50' stroke-width='4'/><text x='100' y='120' font-size='48' font-weight='bold' text-anchor='middle' fill='%234CADE6'>GOD</text><text x='100' y='225' font-size='12' font-weight='bold' text-anchor='middle' fill='%234CADE6' letter-spacing='1'>A BETTER WORLD</text></svg>">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    .about-hero {
+      background: linear-gradient(135deg, rgba(79, 172, 230, 0.15), rgba(44, 62, 80, 0.1));
+      padding: 4rem 2rem;
+      border-radius: 20px;
+      margin: 2rem 0;
+      text-align: center;
+    }
+    .about-hero h2 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      color: #4CADE6;
+      margin: 1.5rem 0 1rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    .about-hero p {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: #2C3E50;
+      line-height: 1.8;
+      max-width: 700px;
+      margin: 1rem auto;
+      font-weight: 500;
+    }
+    .company-story {
+      background: white;
+      padding: 3rem 2rem;
+      border-radius: 15px;
+      margin: 3rem 0;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      border-left: 5px solid #4CADE6;
+    }
+    .company-story h3 {
+      color: #4CADE6;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      margin: 0 0 1rem;
+      text-align: center;
+    }
+    .company-story p {
+      color: #555;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      text-align: justify;
+      margin: 1rem 0;
+    }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+    .value-card {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      border-top: 5px solid #4CADE6;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    .value-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 28px rgba(79, 172, 230, 0.2);
+    }
+    .value-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .value-card h4 {
+      color: #4CADE6;
+      font-size: 1.3rem;
+      margin: 0 0 0.8rem;
+    }
+    .value-card p {
+      color: #555;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+    .section-title {
+      text-align: center;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      color: #4CADE6;
+      margin: 2.5rem 0 1.5rem;
+      font-weight: bold;
+      position: relative;
+      padding-bottom: 1rem;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #4CADE6, transparent);
+    }
+    .policies-section {
+      background: rgba(79, 172, 230, 0.05);
+      padding: 2.5rem;
+      border-radius: 12px;
+      margin: 2rem 0;
+      border-left: 5px solid #4CADE6;
+    }
+    .policies-section h4 {
+      color: #4CADE6;
+      font-size: 1.3rem;
+      margin: 0 0 1rem;
+      font-weight: bold;
+    }
+    .policies-section ul {
+      list-style: none;
+      padding: 0;
+    }
+    .policies-section li {
+      color: #555;
+      font-size: 0.98rem;
+      line-height: 1.8;
+      padding: 0.8rem 0;
+      padding-left: 2rem;
+      position: relative;
+    }
+    .policies-section li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #4CADE6;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    .commitment-box {
+      background: linear-gradient(135deg, rgba(79, 172, 230, 0.1), rgba(44, 62, 80, 0.05));
+      padding: 2rem;
+      border-radius: 10px;
+      margin: 1.5rem 0;
+      border-left: 4px solid #4CADE6;
+    }
+    .commitment-box h5 {
+      color: #4CADE6;
+      margin: 0 0 0.8rem;
+      font-size: 1.1rem;
+    }
+    .commitment-box p {
+      color: #555;
+      margin: 0;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+  </style>
 </head>
 
 <body>
@@ -18,29 +170,114 @@
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
+        <button class="logout-btn" onclick="handleLogout(event)">Logout</button>
       </nav>
+      <button class="hamburger-btn" id="hamburger-btn" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </header>
 
-  <main class="container">
-    <div class="hero">
-      <div class="hero-blobs" aria-hidden="true">
-        <div class="blob blob1"></div>
-        <div class="blob blob2"></div>
-      </div>
-      <h2>About - GOD</h2>
-    </div>
-    <p>We are trying our best to make this world better for everyone
-    </p>
+  <!-- Mobile Menu -->
+  <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html" onclick="closeMobileMenu()">Home</a>
+    <a href="about.html" onclick="closeMobileMenu()">About</a>
+    <a href="contact.html" onclick="closeMobileMenu()">Contact</a>
+    <a href="#" onclick="handleLogout(event)">Logout</a>
+  </div>
 
-    <h3>Terms of use - Data collection</h3>
-    <ul>
-      <li>We collect personal information such as name, email address, and responses submitted through our site.</li>
-      <li>Data is used to improve services and communicate with you.</li>
-      <li>we don't share or sell your data without permission.</li>
-      <li>Your information is kept secure.</li>
-      <li>By using the site, you agree to these terms.</li>
-    </ul>
+  <main class="container">
+    <div class="about-hero">
+      <h2>🌍 About Global Outreach & Development</h2>
+      <p>We are trying our best to make this world better for everyone</p>
+    </div>
+
+    <section class="company-story">
+      <h3>Our Story & Mission</h3>
+      <p>Global Outreach & Development (G.O.D) was founded with a simple yet powerful belief: every person deserves access to education, healthcare, shelter, and opportunity. We're a passionate community of change-makers, volunteers, and donors committed to breaking cycles of poverty and creating sustainable change in underserved communities worldwide.</p>
+      <p>Our mission is to empower individuals and communities through direct, transparent, and measurable interventions. We don't believe in temporary solutions—we invest in lasting transformation through education, skills training, healthcare access, and economic opportunity.</p>
+    </section>
+
+    <h2 class="section-title">💎 Our Core Values</h2>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">🤝</div>
+        <h4>Compassion</h4>
+        <p>We approach every individual with empathy, dignity, and respect. Every life matters, and every need is heard.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">✨</div>
+        <h4>Transparency</h4>
+        <p>Your trust is sacred to us. We provide real-time tracking and detailed reports on where every donation goes and the impact it creates.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🎯</div>
+        <h4>Impact</h4>
+        <p>We measure success by lives changed and communities transformed. Data-driven decisions ensure maximum positive impact.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🌱</div>
+        <h4>Sustainability</h4>
+        <p>We don't provide temporary relief—we build lasting solutions that empower communities to thrive independently.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">👥</div>
+        <h4>Community</h4>
+        <p>Change happens together. We work hand-in-hand with local partners and beneficiaries to co-create solutions.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🔍</div>
+        <h4>Accountability</h4>
+        <p>We hold ourselves to the highest standards. Every project is audited, monitored, and reported transparently.</p>
+      </div>
+    </div>
+
+    <h2 class="section-title">📋 Terms of Use & Data Collection</h2>
+    
+    <div class="policies-section">
+      <h4>💾 What Information We Collect</h4>
+      <ul>
+        <li>Personal information such as name, email address, and contact details when you engage with our site</li>
+        <li>Responses and feedback submitted through our contact forms and donation platforms</li>
+        <li>Usage data to understand how visitors interact with our website</li>
+        <li>Donation information (amount, date, and designated cause) for tracking and reporting purposes</li>
+      </ul>
+    </div>
+
+    <div class="policies-section">
+      <h4>🎯 How We Use Your Data</h4>
+      <ul>
+        <li>To improve our services and create a better user experience</li>
+        <li>To communicate with you about your donations and their impact</li>
+        <li>To send updates about our programs and initiatives (only with your consent)</li>
+        <li>To generate impact reports and track donation effectiveness</li>
+        <li>To comply with legal and regulatory requirements</li>
+      </ul>
+    </div>
+
+    <div class="policies-section">
+      <h4>🔐 Data Security & Privacy</h4>
+      <ul>
+        <li>We don't share or sell your data without your explicit permission</li>
+        <li>Your information is kept secure with industry-standard encryption and protection measures</li>
+        <li>Only authorized team members have access to sensitive personal information</li>
+        <li>We comply with international data protection and privacy regulations</li>
+        <li>You have the right to access, modify, or delete your personal information at any time</li>
+      </ul>
+    </div>
+
+    <div class="commitment-box">
+      <h5>📜 Your Agreement</h5>
+      <p>By using this website and engaging with G.O.D, you agree to these terms and conditions. You understand that your personal information will be handled responsibly and used only to enhance your experience and maximize our collective impact. We commit to protecting your privacy and maintaining the highest standards of data security and ethical practices.</p>
+    </div>
+
+    <div class="commitment-box">
+      <h5>🌟 Our Promise to You</h5>
+      <p>We promise complete transparency in how we operate, how we use your data, and how your contributions create real change. Your trust is the foundation of our mission, and we take it seriously. If you have any questions about our practices or policies, we're here to help. Contact us anytime—your concerns matter.</p>
+    </div>
   </main>
 
   <footer class="site-footer">
@@ -48,6 +285,46 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script>
+    // Hamburger Menu Toggle
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+
+    if (hamburgerBtn) {
+      hamburgerBtn.addEventListener('click', () => {
+        hamburgerBtn.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        mobileMenuOverlay.classList.toggle('active');
+      });
+    }
+
+    if (mobileMenuOverlay) {
+      mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+    }
+
+    function closeMobileMenu() {
+      if (hamburgerBtn) hamburgerBtn.classList.remove('active');
+      mobileMenu.classList.remove('active');
+      mobileMenuOverlay.classList.remove('active');
+    }
+
+    // Global logout function
+    function performLogout(e) {
+      if (e) e.preventDefault();
+      sessionStorage.clear();
+      sessionStorage.removeItem('siteUnlocked');
+      sessionStorage.removeItem('siteUserName');
+      sessionStorage.removeItem('siteUserEmail');
+      sessionStorage.removeItem('emailVerificationCode');
+      window.location.href = window.location.pathname;
+    }
+
+    function handleLogout(e) {
+      e.preventDefault();
+      performLogout(e);
+    }
+  </script>
 </body>
 
 </html>
